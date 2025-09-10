@@ -190,61 +190,61 @@ ServerEvents.recipes(event => {
     }
 
     // Cinamon
-    event.replaceInput({input:"abyssal_decor:cinnamon_stick", not:{output:"abyssal_decor:cinnamon_shingles"}},
-        "abyssal_decor:cinnamon_stick",
-        "expandeddelight:cinnamon"
-    )
-    event.remove({output: "expandeddelight:cinnamon"})
-    event.custom(
-        {
-            "type": "farmersdelight:cutting",
-            "ingredients": [
-                {
-                    "tag": "kubejs:cinnamon_stick"
-                }
-            ],
-            "result": [
-                {
-                    "item": {
-                        "count": 2,
-                        "id": "expandeddelight:cinnamon"
-                    }
-                },
-                {
-                    "chance": 0.15,
-                    "item": {
-                        "count": 1,
-                        "id": "expandeddelight:cinnamon"
-                    }
-                }
-            ],
-            "tool": {
-                "tag": "expandeddelight:crushing_tools"
-            }
-          }
-    )
-    event.shapeless("expandeddelight:cinnamon_stick", "abyssal_decor:cinnamon_stick");
-    event.shapeless("abyssal_decor:cinnamon_stick", "expandeddelight:cinnamon_stick");
+    // event.replaceInput({input:"abyssal_decor:cinnamon_stick", not:{output:"abyssal_decor:cinnamon_shingles"}},
+    //     "abyssal_decor:cinnamon_stick",
+    //     "expandeddelight:cinnamon"
+    // )
+    // event.remove({output: "expandeddelight:cinnamon"})
+    // event.custom(
+    //     {
+    //         "type": "farmersdelight:cutting",
+    //         "ingredients": [
+    //             {
+    //                 "tag": "kubejs:cinnamon_stick"
+    //             }
+    //         ],
+    //         "result": [
+    //             {
+    //                 "item": {
+    //                     "count": 2,
+    //                     "id": "expandeddelight:cinnamon"
+    //                 }
+    //             },
+    //             {
+    //                 "chance": 0.15,
+    //                 "item": {
+    //                     "count": 1,
+    //                     "id": "expandeddelight:cinnamon"
+    //                 }
+    //             }
+    //         ],
+    //         "tool": {
+    //             "tag": "expandeddelight:crushing_tools"
+    //         }
+    //       }
+    // )
+    // event.shapeless("expandeddelight:cinnamon_stick", "abyssal_decor:cinnamon_stick");
+    // event.shapeless("abyssal_decor:cinnamon_stick", "expandeddelight:cinnamon_stick");
 
     // Rings (Jewelery vs Aether)
-    event.remove({output:"#jewelry:rings", output:"#rpg_series:tier_0_accessories"})
-    for (const metal of ['copper', 'iron', 'gold']){
-        let metal_s = metal;
-        if (metal === 'gold'){metal_s = 'golden';} // Golden sheets
-        event.shaped(
-            Item.of(`jewelry:${metal}_ring`, 1),
-            [
-                " A ",
-                "B B",
-                " B "
+    // event.remove({output:"#jewelry:rings", output:"#rpg_series:tier_0_accessories"})
+    // for (const metal of ['copper', 'iron', 'gold']){
+    //     let metal_s = metal;
+    //     if (metal === 'gold'){metal_s = 'golden';} // Golden sheets
+    //     event.shaped(
+    //         Item.of(`jewelry:${metal}_ring`, 1),
+    //         [
+    //             " A ",
+    //             "B B",
+    //             " B "
 
-            ],
-            {
-                'A': `create:${metal_s}_sheet`,
-                'B': `minecraft:${metal}_ingot`
-            }
-        )
-    }
+    //         ],
+    //         {
+    //             'A': `create:${metal_s}_sheet`,
+    //             'B': `minecraft:${metal}_ingot`
+    //         }
+    //     )
+    // }
 
     // Handcrafted Pillar Trims (Bricks pillar)
     const pillar_trim_materials = [
@@ -334,12 +334,12 @@ ServerEvents.recipes(event => {
             "echo",
             "bloom" // stems instead of logs
         ],
-        "abyssal_decor": [  // No tags
-            // "ancient_birch",
-            "white_wood",
-            "blackwood",
-            "cinnamon" // needs extra attention
-        ],
+        // "abyssal_decor": [  // No tags
+        //     // "ancient_birch",
+        //     "white_wood",
+        //     "blackwood",
+        //     "cinnamon" // needs extra attention
+        // ],
         "expandeddelight": [
             "cinnamon"
         ],
@@ -381,67 +381,67 @@ ServerEvents.recipes(event => {
             if (mod === 'minecraft'){
                 pillarTrim(m, [`${mod}:${m}_planks`, `${mod}:${m}_slab` ]);
             }
-            else {
-                let output = `everycomp:hc/${mod}/${m}_pillar_trim`;
-                let pillarInputs = [`${mod}:${m}_planks`, `${mod}:${m}_slab`]
-                event.remove({ output: output })
-                event.shaped(
-                    Item.of(output, 4),
-                    [
-                        ' A ',
-                        ' AB',
-                        ' A '
-                    ],
-                    {
-                        A: pillarInputs[0],
-                        B: pillarInputs[1]
-                    }
-                )
-            }
+            // else {
+            //     // let output = `everycomp:hc/${mod}/${m}_pillar_trim`;
+            //     let pillarInputs = [`${mod}:${m}_planks`, `${mod}:${m}_slab`]
+            //     event.remove({ output: output })
+            //     event.shaped(
+            //         Item.of(output, 4),
+            //         [
+            //             ' A ',
+            //             ' AB',
+            //             ' A '
+            //         ],
+            //         {
+            //             A: pillarInputs[0],
+            //             B: pillarInputs[1]
+            //         }
+            //     )
+            // }
         }
     }
 
     // Abyssal Decor Pillars (Brick pillar)
-    const pillar_materials = {
-        'white_pearl': ['block_of_pearl','white_pearl'],
-        'blood_coral':['polished_blood_coral', 'blood_coral_bud'],
-        'jade':['polished_jade','green_dye'],
-        'seabrass':['seabrass_block', 'seabrass_ingot'],
-        'deepbronze': ['deepbronze_block', 'deepbronze_ingot'],
-        'lapis':['lapis_block', 'lapis_lazuli'],
-        'black_pearl':['block_of_black_pearl', 'black_pearl'],
-        'brick': ['bricks', 'brick'],
-        'effervescent' : ['polished_effervescence', 'effervescence']
-    }
-    const pillar_minecraft = ['green_dye', 'lapis_lazuli', 'lapis_block', 'brick', 'bricks']
+    // const pillar_materials = {
+    //     'white_pearl': ['block_of_pearl','white_pearl'],
+    //     'blood_coral':['polished_blood_coral', 'blood_coral_bud'],
+    //     'jade':['polished_jade','green_dye'],
+    //     'seabrass':['seabrass_block', 'seabrass_ingot'],
+    //     'deepbronze': ['deepbronze_block', 'deepbronze_ingot'],
+    //     'lapis':['lapis_block', 'lapis_lazuli'],
+    //     'black_pearl':['block_of_black_pearl', 'black_pearl'],
+    //     'brick': ['bricks', 'brick'],
+    //     'effervescent' : ['polished_effervescence', 'effervescence']
+    // }
+    // const pillar_minecraft = ['green_dye', 'lapis_lazuli', 'lapis_block', 'brick', 'bricks']
 
-    for (const [material, ingredients] of Object.entries(pillar_materials)){
-        // event.remove({output: `abyssal_decor:${material}_pillar`})
-        let A = `abyssal_decor:${ingredients[1]}`;
-        let B = `abyssal_decor:${ingredients[0]}`;
-        if (pillar_minecraft.includes(ingredients[1])){
-            A = `minecraft:${ingredients[1]}`;
-        }
-        if (pillar_minecraft.includes(ingredients[0])){
-            B = `minecraft:${ingredients[0]}`;
-        }
+    // for (const [material, ingredients] of Object.entries(pillar_materials)){
+    //     // event.remove({output: `abyssal_decor:${material}_pillar`})
+    //     let A = `abyssal_decor:${ingredients[1]}`;
+    //     let B = `abyssal_decor:${ingredients[0]}`;
+    //     if (pillar_minecraft.includes(ingredients[1])){
+    //         A = `minecraft:${ingredients[1]}`;
+    //     }
+    //     if (pillar_minecraft.includes(ingredients[0])){
+    //         B = `minecraft:${ingredients[0]}`;
+    //     }
         
-        event.recipes.stonecutting(`abyssal_decor:${material}_pillar`, B)
-    }
+    //     event.recipes.stonecutting(`abyssal_decor:${material}_pillar`, B)
+    // }
 
     // Brick trapdoor recipe
-    event.remove({output: 'abyssal_decor:brick_trapdoor'});
-    event.shaped(
-        Item.of('abyssal_decor:brick_trapdoor'),
-        [
-            'ABA',
-            'ABA'
-        ],
-        {
-            A: 'minecraft:bricks',
-            B: 'minecraft:brick'
-        }
-    )
+    // event.remove({output: 'abyssal_decor:brick_trapdoor'});
+    // event.shaped(
+    //     Item.of('abyssal_decor:brick_trapdoor'),
+    //     [
+    //         'ABA',
+    //         'ABA'
+    //     ],
+    //     {
+    //         A: 'minecraft:bricks',
+    //         B: 'minecraft:brick'
+    //     }
+    // )
 
     // Wood plate
     event.remove({output: 'handcrafted:wood_plate'});
@@ -484,8 +484,10 @@ ServerEvents.recipes(event => {
     )
 
     // Jade
-    event.recipes.stonecutting('jewelry:jade', 'samurai_dynasty:jade')
+    // event.recipes.stonecutting('jewelry:jade', 'samurai_dynasty:jade')
 
+    // Chorium
+    event.remove({output:'createcasing:chorium_ingot'})
 
     // THIS LINE IS ALSO IMPORTANT!
     // IT MUST BE THE LAST LINE IN THE EVENT HANDLER
@@ -529,6 +531,9 @@ RecipeViewerEvents.removeEntries('item', event => {
 
     // Vertical vaults
     event.remove('create_connected:item_silo')
+
+    // Chorium
+    event.remove('createcasing:chorium_ingot')
 
 })
 
