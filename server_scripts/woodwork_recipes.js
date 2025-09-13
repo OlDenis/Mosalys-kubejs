@@ -118,6 +118,35 @@ let wood_types = {
         "green",
         "red",
         "black"
+    ],
+    "upgrade_aquatic":[
+        "driftwood",
+        "river"
+    ],
+    "regions_unexplored":[
+        "alpha",
+        "baobab",
+        "blackwood",
+        "blue_bioshroom",
+        "brimwood",
+        "cobalt",
+        "cypress",
+        "dead",
+        "eucalyptus",
+        "green_bioshroom",
+        "joshua",
+        "kapok",
+        "larch",
+        "magnolia",
+        "maple",
+        "mauve",
+        "palm",
+        "pine",
+        "pink_bioshroom",
+        "redwood",
+        "socotra",
+        "willow",
+        "yellow_bioshroom"
     ]
 }
 
@@ -325,7 +354,16 @@ let vanilla_items = {
 }
 
 let luminousshelf = ["oak", "birch", "spruce", "bao"];
-let stem_wood = ["crimson", "warped", "sepia", "bloom"];
+let stem_wood = [
+    "crimson",
+     "warped", 
+     "sepia", 
+     "bloom",
+      "blue_bioshroom", 
+      "pink_bioshroom", 
+      "green_bioshroom", 
+      "yellow_bioshroom"
+    ];
 let bamboo_wood = ["bamboo", "powdery"] // Note: has a special type of planks called mosaic
 let log_variants = ["logs", "stems", "blocks"]
 
@@ -545,6 +583,11 @@ ServerEvents.tags("item", event => {
     // Missing chest variants
     for (const planks_type of missing_chest_variant){
         event.add("kubejs:vanilla_chest_ingredient", planks_type)
+    }
+    // Region unexplored stems
+    for (const color of ['blue', 'green', 'pink', 'yellow']){
+        event.add("regions_unexplored:" + color + "_bioshroom_stems", "regions_unexplored:" + color +"_bioshroom_stem")
+        event.add("regions_unexplored:" + color + "_bioshroom_stems", "regions_unexplored:" + color +"_bioshroom_stem")
     }
 })
 
