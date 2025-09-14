@@ -489,6 +489,32 @@ ServerEvents.recipes(event => {
     // Chorium
     event.remove({output:'createcasing:chorium_ingot'})
 
+    // Knight Quest
+    event.remove({output:'knightquest:steel_sword'})
+    event.remove({output:'knightquest:steel_axe'})
+    event.shaped(
+        'knightquest:steel_sword',
+        [
+            ' A ',' A ',' B '
+        ],
+        {
+            A:'samurai_dynasty:steel_ingot',
+            B: 'minecraft:stick'
+        }
+    )
+    event.shaped(
+        'knightquest:steel_axe',
+        [
+            'AA ',
+            'AB ',
+            ' B '
+        ],
+        {
+            A: 'samurai_dynasty:steel_ingot',
+            B: 'minecraft:stick'
+        }
+    )
+
     // THIS LINE IS ALSO IMPORTANT!
     // IT MUST BE THE LAST LINE IN THE EVENT HANDLER
     event.recipes.create.finalize();

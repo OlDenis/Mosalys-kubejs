@@ -1,4 +1,10 @@
-// requires: endrem, endermanoverhaul, garnished, undergarden, tide, benssharks, irons_spellbooks
+// requires: endrem
+// requires:endermanoverhaul
+// requires: garnished
+// requires:undergarden
+// requires:tide
+// requires: upgrade_aquatic
+// requires: irons_spellbooks
 
 // This script add the modified end remaster eyes recipes
 
@@ -105,7 +111,7 @@ ServerEvents.recipes(event => {
         {
             A: 'kubejs:guardian_eye_sclera',
             C: 'endermanoverhaul:bubble_pearl',
-            B: 'benssharks:axoleather',
+            B: 'upgrade_aquatic:thrasher_tooth',
             D: 'minecraft:blaze_powder'
 
         }
