@@ -229,6 +229,44 @@ const mod_items = {
                 "id": "cabinet",
                 "amount": 1
             }
+        ],
+        "unusual_furniture": [
+            {
+                "id": "chair",
+                "amount": 4
+            },
+            {
+                "id": "stool",
+                "amount": 4
+            },
+            {
+                "id": "drawer",
+                "amount": 1
+            },
+            {
+                "id": "shelf",
+                "amount": 4
+            },
+            {
+                "id": "open_riser_stairs",
+                "amount": 4
+            },
+            {
+                "id": "carved",
+                "amount": 4
+            },
+            {
+                "id": "railing",
+                "amount": 2
+            },
+            {
+                "id": "coffee_table",
+                "amount": 1
+            },
+            {
+                "id": "beam",
+                "amount": 4
+            }
         ]
     },
     "planks": {
@@ -279,6 +317,28 @@ const mod_items = {
                 "id": "banister",
                 "amount": 3
             }
+        ],
+        "unusual_furniture": [
+            {
+                "id": "chair",
+                "amount": 1
+            },
+            {
+                "id": "stool",
+                "amount": 1
+            },
+            {
+                "id": "shelf",
+                "amount": 1
+            },
+            {
+                "id": "open_riser_stairs",
+                "amount": 1
+            },
+            {
+                "id": "carved",
+                "amount": 1
+            }
         ]
     },
     "sign": {
@@ -286,6 +346,14 @@ const mod_items = {
             {
                 "id": "way_sign",
                 "amount": 2
+            }
+        ]
+    },
+    "stairs": {
+        "unusual_furniture": [
+            {
+                "id": "open_riser_stairs",
+                "amount": 1
             }
         ]
     }
@@ -447,7 +515,7 @@ function modItemSawmillRecipe(event, mod_items, wood_type, namespace){
                 // Define proper item id for the result
                 let result_id = mod + ":" + wood_type + "_" + result["id"];
                 if (result["id"] === "way_sign") {
-                    result_id = mod + ":" + result["id"] + "_" + wood_type;
+                    result_id = mod + ":way_sign_" + wood_type;
                 }
                 else if (mod === "luminousworld") {
                     // Patch luminousworld log_stack IDs
@@ -462,6 +530,9 @@ function modItemSawmillRecipe(event, mod_items, wood_type, namespace){
                     if (result["id"] === "shelf" && luminousshelf.includes(wood_type)) {
                         result_id += "_1";
                     }
+                }
+                else if (mod === "unusual_furniture" && result["id"] === "carved") {
+                    result_id = mod + ":carved_" + wood_type;
                 }
 
                 let r = sawmillRecipe(ingredient, result_id, result["amount"], log_variants.includes(ingredient_part))
