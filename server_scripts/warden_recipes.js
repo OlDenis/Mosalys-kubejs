@@ -1,5 +1,9 @@
-//requires: create_deep_dark, deeperdarker, create, garnished
-// This is a server script for KubeJS.
+//requires: create_deep_dark
+// requires: deeperdarker
+// requires: create
+// requires: garnished
+// Add recipes for a new warden armor : reinforced echo armor
+// Change recipes for warden tools to use reinforced echo ingot
 
 // Listen for the "recipes" server event.
 ServerEvents.recipes(event => {

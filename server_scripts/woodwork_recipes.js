@@ -1,5 +1,30 @@
-// ignore : false
-// requires: woodwork, handcrafted, supplementaries, luminousworld, createcasing, decorativepaths, twilightforest, farmersdelight
+// priority: 2
+// requires: woodwork
+
+// requires: createcasing
+// requires: decorativepaths
+// requires: farmersdelight
+// requires: handcrafted
+// requires: luminousworld
+// requires: pastel
+// requires: regions_unexplored
+// requires: supplementaries
+// requires: twilightforest
+// requires: unusual_furniture
+// requires: vanillabackport
+// requires: luminous_nether
+// requires: undergarden
+// requires: aether
+// requires: deep_aether
+// requires: ars_nouveau
+// requires: betterarcheology
+// requires: mynethersdelight
+// requires: moresnifferflowers
+// requires: samurai_dynasty
+// requires: garnished
+
+
+
 // Data
 const wood_types = {
     "minecraft": [
@@ -455,7 +480,7 @@ const colors = [
 ]
 
 // Wood types with missing chest variant
-let missing_chest_variant = [
+const missing_chest_variant = [
     // Luminous
     'luminousworld:autumnplank',
     'luminousworld:baobab_plank',

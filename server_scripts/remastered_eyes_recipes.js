@@ -1,10 +1,10 @@
 // requires: endrem
-// requires:endermanoverhaul
+// requires: endermanoverhaul
 // requires: garnished
-// requires:undergarden
-// requires:tide
-// requires: upgrade_aquatic
 // requires: irons_spellbooks
+// requires: tide
+// requires: undergarden
+// requires: upgrade_aquatic
 
 // This script add the modified end remaster eyes recipes
 

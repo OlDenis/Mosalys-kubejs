@@ -1,4 +1,5 @@
-// requires: create, rechiseled
+// requires: create
+// requires: rechiseled
 // priority: 2
 
 // This script adds tags for deepstone blocks (rechiseled)

@@ -1,4 +1,18 @@
-//requires: create_compressed, create_ironworks, create_things_and_misc, cratedelight, expandeddelight, create_things_and_misc, create, simplyswords
+// priority: 1000
+// This script depends on other scripts, so it must run after them
+// The following lines ensure that this script runs after the specified scripts
+// requires: farmersdelight
+// requires: cratedelight
+// requires: expandeddelight
+// requires: create
+// requires: create_compressed
+// requires: create_ironworks
+// requires: create_things_and_misc
+// requires: create_things_and_misc
+// requires: simplyswords
+// requires: samurai_dynasty
+// requires: knightquest
+
 
 // This script removes duplicate items and recipes from Not a Modpack
 
@@ -381,23 +395,6 @@ ServerEvents.recipes(event => {
             if (mod === 'minecraft'){
                 pillarTrim(m, [`${mod}:${m}_planks`, `${mod}:${m}_slab` ]);
             }
-            // else {
-            //     // let output = `everycomp:hc/${mod}/${m}_pillar_trim`;
-            //     let pillarInputs = [`${mod}:${m}_planks`, `${mod}:${m}_slab`]
-            //     event.remove({ output: output })
-            //     event.shaped(
-            //         Item.of(output, 4),
-            //         [
-            //             ' A ',
-            //             ' AB',
-            //             ' A '
-            //         ],
-            //         {
-            //             A: pillarInputs[0],
-            //             B: pillarInputs[1]
-            //         }
-            //     )
-            // }
         }
     }
 
@@ -482,10 +479,6 @@ ServerEvents.recipes(event => {
             B : 'minecraft:barrel'
         }
     )
-
-    // Jade
-    // event.recipes.stonecutting('jewelry:jade', 'samurai_dynasty:jade')
-
     // Chorium
     event.remove({output:'createcasing:chorium_ingot'})
 
@@ -532,26 +525,26 @@ RecipeViewerEvents.removeEntries('item', event => {
         event.remove(`samurai_dynasty:sai${material}`)
     }
     // Remove smallships whith no textures
-    const smallship_w_types = [
-        'aether_skyroot',
-        'twilightforest_canopy',
-        'twilightforest_dark',
-        'twilightforest_dark',
-        'twilightforest_mangrove',
-        'twilightforest_mining',
-        'twilightforest_sorting',
-        'twilightforest_time',
-        'twilightforest_transformation',
-        'twilightforest_twilight_oak',
-        'undergarden_grongle',
-        'undergarden_smogstem',
-        'undergarden_wigglewood'
-    ]
-    for (const ship_type of ['cog', 'brigg', 'galley', 'drakkar']){
-        for (const w_type of smallship_w_types){
-            event.remove(`smallships:${w_type}_${ship_type}`)
-        }
-    }
+    // const smallship_w_types = [
+    //     'aether_skyroot',
+    //     'twilightforest_canopy',
+    //     'twilightforest_dark',
+    //     'twilightforest_dark',
+    //     'twilightforest_mangrove',
+    //     'twilightforest_mining',
+    //     'twilightforest_sorting',
+    //     'twilightforest_time',
+    //     'twilightforest_transformation',
+    //     'twilightforest_twilight_oak',
+    //     'undergarden_grongle',
+    //     'undergarden_smogstem',
+    //     'undergarden_wigglewood'
+    // ]
+    // for (const ship_type of ['cog', 'brigg', 'galley', 'drakkar']){
+    //     for (const w_type of smallship_w_types){
+    //         event.remove(`smallships:${w_type}_${ship_type}`)
+    //     }
+    // }
     // Create connected copycats 
     event.remove('#kubejs:copycats')
 

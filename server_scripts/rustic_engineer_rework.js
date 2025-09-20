@@ -1,6 +1,6 @@
 //requires: rustic_engineer
 //requires: create
-//requires: create_ironworks
+//requires: alloyed
 
 ServerEvents.recipes(event => {
     // THIS LINE IS IMPORTANT!
@@ -14,19 +14,19 @@ ServerEvents.recipes(event => {
     event.replaceInput(
         {input: 'rustic_engineer:iron_plate'},
         'rustic_engineer:iron_plate',
-         'create_ironworks:steel_sheet');
+         'alloyed:steel_sheet');
     // Replace iron parts ingredient by steel parts
     event.replaceInput(
         {output: 'rustic_engineer:iron_pieces'},
         'minecraft:iron_ingot',
-         'create_ironworks:steel_ingot');
+         'alloyed:steel_ingot');
     event.replaceInput(
         {output: 'rustic_engineer:iron_pieces'},
         'minecraft:iron_nugget',
-         'create_ironworks:steel_nugget');
+         'alloyed:steel_nugget');
     // Gears are made by cutting steel sheets
     event.remove({output: 'rustic_engineer:gear'});
-    event.stonecutting('4x rustic_engineer:gear', 'create_ironworks:steel_sheet');
+    event.stonecutting('4x rustic_engineer:gear', 'alloyed:steel_sheet');
     // Replace iron nuggets by gears in precision mechanism recipe
     event.remove(
         {output: 'create:precision_mechanism'});
@@ -61,8 +61,8 @@ ServerEvents.recipes(event => {
             ' B '
         ],
         {
-            A: 'create_ironworks:steel_sheet',
-            B: 'create_ironworks:steel_ingot',
+            A: 'alloyed:steel_sheet',
+            B: 'alloyed:steel_ingot',
         }
     )
     event.remove({output: 'rustic_engineer:clock_key'});
@@ -73,8 +73,8 @@ ServerEvents.recipes(event => {
             ' B '
         ],
         {
-            A: 'create_ironworks:steel_sheet',
-            B: 'create_ironworks:steel_ingot',
+            A: 'alloyed:steel_sheet',
+            B: 'alloyed:steel_ingot',
         }
     )
 

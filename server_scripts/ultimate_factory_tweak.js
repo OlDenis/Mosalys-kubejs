@@ -1,4 +1,7 @@
-// requires create_utlimate_factory, create_d2d, garnished, create_ironworks
+// requires: create_utlimate_factory 
+// requires: create_d2d
+// requires: garnished
+// requires: create_ironworks
 
 const ultimate = 'create_ultimate_factory:';
 const recipesToRemove = [

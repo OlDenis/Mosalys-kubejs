@@ -1,3 +1,5 @@
+// requires: luminousworld
+
 ServerEvents.tags("block", event => {
     // Baobab blocks
     event.add("minecraft:wooden_stairs", "luminousworld:baobab_stairs")

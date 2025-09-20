@@ -1,4 +1,15 @@
-//requires: endrem, betterarcheology, betterdeserttemples, medieval_buildings, irons_spellbooks, undergarden, nova_structures, terralith, sweety_archaeology, aether, twilightforest, betterarcheology, betterdeserttemples, medieval_buildings, irons_spellbooks, undergarden, nova_structures, terralith, sweety_archaeology, aether, twilightforest, handcrafted
+// requires: endrem
+
+// requires: aether
+// requires: betterarcheology
+// requires: betterdeserttemples
+// requires: handcrafted
+// requires: irons_spellbooks
+// requires: nova_structures
+// requires: sweety_archaeology
+// requires: terralith
+// requires: twilightforest
+// requires: undergarden
 
 // Replace End remaster's eyes with shards that will be used to craft them
 // Old Eye fragment loot tables
@@ -71,14 +82,6 @@ const eyesLootTables = {
         
     ],
     "black": [
-        {
-            id: "medieval_buildings:chests/ship_barrel",
-            weight: 0.3
-        },
-        {
-            id: "medieval_buildings:chests/ship_chests",
-            weight: 0.3
-        },
         {
             id: "irons_spellbooks:chests/impaled_icebreaker/captain_quarters",
             weight: 3
