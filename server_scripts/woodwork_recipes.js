@@ -161,7 +161,7 @@ const wood_types = {
         "palm",
         "maple",
         "aspen",
-        "wallnut",
+        "walnut",
         "blue_spruce"
     ]
 }
