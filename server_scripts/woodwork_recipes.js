@@ -1,27 +1,7 @@
 // priority: 2
-// requires: woodwork
+// requires: woodworks
 
-// requires: createcasing
-// requires: decorativepaths
-// requires: farmersdelight
-// requires: handcrafted
-// requires: luminousworld
-// requires: pastel
-// requires: regions_unexplored
-// requires: supplementaries
-// requires: twilightforest
-// requires: unusual_furniture
-// requires: vanillabackport
-// requires: luminous_nether
-// requires: undergarden
-// requires: aether
-// requires: deep_aether
-// requires: ars_nouveau
-// requires: betterarcheology
-// requires: mynethersdelight
-// requires: moresnifferflowers
-// requires: samurai_dynasty
-// requires: garnished
+
 
 
 
@@ -168,6 +148,21 @@ const wood_types = {
     "luminous_nether": [
         "mushroom",
         "withered"
+    ],
+    "would": [
+        "willow",
+        "baobab",
+        "ebony",
+        "fir",
+        "pine",
+        "cedar",
+        "mahogany",
+        "azalea",
+        "palm",
+        "maple",
+        "aspen",
+        "wallnut",
+        "blue_spruce"
     ]
 }
 
