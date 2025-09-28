@@ -525,7 +525,7 @@ RecipeViewerEvents.removeEntries('item', event => {
         event.remove(`samurai_dynasty:sai${material}`)
     }
     // Remove smallships whith no textures
-    // const smallship_w_types = [
+    const smallship_w_types = [
     //     'aether_skyroot',
     //     'twilightforest_canopy',
     //     'twilightforest_dark',
@@ -539,12 +539,14 @@ RecipeViewerEvents.removeEntries('item', event => {
     //     'undergarden_grongle',
     //     'undergarden_smogstem',
     //     'undergarden_wigglewood'
-    // ]
-    // for (const ship_type of ['cog', 'brigg', 'galley', 'drakkar']){
-    //     for (const w_type of smallship_w_types){
-    //         event.remove(`smallships:${w_type}_${ship_type}`)
-    //     }
-    // }
+    'undergarden_ancient_root'
+    ]
+    
+    for (const ship_type of ['cog', 'brigg', 'galley', 'drakkar']){
+        for (const w_type of smallship_w_types){
+            event.remove(`smallships:${w_type}_${ship_type}`)
+        }
+    }
     // Create connected copycats 
     event.remove('#kubejs:copycats')
 
