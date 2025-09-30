@@ -2,14 +2,14 @@
 
 const bronze_oxydation_levels = [
     '',
-    'exposed',
-    'weathered',
-    'oxidized'
+    'exposed_',
+    'weathered_',
+    'oxidized_'
 ]
 const iron_oxydation_levels = [
     '',
-    'exposed',
-    'oxidized'
+    'exposed_',
+    'oxidized_'
 ]
 
 const bronze_items = [
@@ -60,8 +60,8 @@ ServerEvents.recipes(event => {
     // Bronze Oxidation
     for(let index = 0; index < bronze_oxydation_levels.length - 1; index++) {
         bronze_items.forEach((item) => {
-            let ingredient = item.replace('$I', bronze_oxydation_levels[index] + '_bronze')
-            let result = item.replace('$I', bronze_oxydation_levels[index + 1] + '_bronze')
+            let ingredient = item.replace('$I', bronze_oxydation_levels[index]+'bronze')
+            let result = item.replace('$I', bronze_oxydation_levels[index + 1]+'bronze')
             fillingRecipe(event, ingredient, result, 'alloyed', 'bronze');
         });
     }
@@ -69,8 +69,8 @@ ServerEvents.recipes(event => {
     // Iron Oxidation
     for(let index = 0; index < iron_oxydation_levels.length - 1; index++) {
         iron_items.forEach((item) => {
-            let ingredient = `${iron_oxydation_levels[index]}_${item}`
-            let result = `${iron_oxydation_levels[index + 1]}_${item}`
+            let ingredient = `${iron_oxydation_levels[index]}${item}`
+            let result = `${iron_oxydation_levels[index + 1]}${item}`
             fillingRecipe(event, ingredient, result,'spelunkers_palette', 'iron');
         });
     }
