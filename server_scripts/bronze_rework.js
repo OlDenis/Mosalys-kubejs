@@ -65,6 +65,12 @@ ServerEvents.recipes(event => {
     event.remove({output: 'create_ironworks:bronze_nugget'})
     event.remove({output: 'create_ironworks:bronze_sheet'})
 
+    // Alloy to convert ironworks bronze ingot to alloyed bronze ingot
+    event.shapeless(
+        'alloyed:bronze_ingot',
+        'create_ironworks:bronze_ingot'
+        ).id('kubejs:alloyed/bronze_ingot_from_ironworks')
+
     event.recipes.create.mixing(
         ['3x alloyed:bronze_ingot',
             withChance('create_ironworks:tin_nugget', 0.5),
@@ -72,7 +78,9 @@ ServerEvents.recipes(event => {
             withChance('create:experience_nugget', 0.75)
         ],
         [
-            '3x minecraft:copper_ingot',
+            'minecraft:copper_ingot',
+            'minecraft:copper_ingot',
+            'minecraft:copper_ingot',
             'create_ironworks:tin_ingot'
         ]
     ).id('kubejs:mixing/bronze_ingot_x3')
@@ -85,14 +93,18 @@ ServerEvents.recipes(event => {
         ],
         [        
             'minecraft:copper_ingot',
-            '3x create_ironworks:tin_nugget'
+            'create_ironworks:tin_nugget',
+            'create_ironworks:tin_nugget',
+            'create_ironworks:tin_nugget'
         ]
     ).id('kubejs:mixing/bronze_ingot')
     
     event.recipes.create.mixing(
-        '3x alloyed:bronze_nugget'
+       ['3x alloyed:bronze_nugget']
         [
-            '3x create:copper_nugget',
+            'create:copper_nugget',
+            'create:copper_nugget',
+            'create:copper_nugget',
             'create_ironworks:tin_nugget'
         ]
     ).id('kubejs:mixing/bronze_nugget_x3')
