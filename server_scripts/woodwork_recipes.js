@@ -699,6 +699,9 @@ ServerEvents.tags("item", event => {
     for (const planks_type of missing_chest_variant){
         event.add("kubejs:vanilla_chest_ingredient", planks_type)
     }
+    for (const plank_type of wood_types["regions_unexplored"]){
+        event.add("kubejs:vanilla_chest_ingredient", "regions_unexplored:" + plank_type + "_planks")
+    }
 
     // Luminous nether logs
     event.add("luminous_nether:withered_logs", "luminous_nether:withered_log")
