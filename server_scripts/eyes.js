@@ -120,37 +120,40 @@ LootJS.modifiers(event => {
     // Add Old eye to sandworm loot table
     event.addTableModifier("block_factorys_bosses:bosses/sandworm")
         .addLoot("endrem:old_eye")
-        // Replace rogue eye by its fragment
-        event.addTableModifier("minecraft:chests/jungle_temple")
+    // Replace rogue eye by its fragment
+    event.addTableModifier("minecraft:chests/jungle_temple")
         .replaceLoot("endrem:rogue_eye", "kubejs:rogue_eye_fragment", true)
-        // Replace black eye by its fragment
-        event.addTableModifier("minecraft:chests/buried_treasure")
+    // Replace black eye by its fragment
+    event.addTableModifier("minecraft:chests/buried_treasure")
         .replaceLoot("endrem:black_eye", "kubejs:black_eye_fragment", true)
-        // Replace cursed eye by its fragment
-        event.addTableModifier("minecraft:chests/bastion_treasure")
+    // Replace cursed eye by its fragment
+    event.addTableModifier(LootType.CHEST)
         .replaceLoot("endrem:cursed_eye", "kubejs:cursed_eye_fragment", true)
-        // Replace lost eye by bread
-        event.addTableModifier("minecraft:chests/abandoned_mineshaft")
+    // Replace lost eye by bread
+    event.addTableModifier(LootType.CHEST)
         .replaceLoot("endrem:lost_eye", "minecraft:bread", true)
-        // Replace corrupted eye by bread
-        event.addTableModifier("minecraft:chests/pillager_outpost")
+    // Replace corrupted eye by bread
+    event.addTableModifier(LootType.CHEST)
         .removeLoot("endrem:corrupted_eye")
-        // Add corrupted eye to lone citadel loot tables
-        event.addTableModifier("nova_structures:chests/lone_citadel/c_vault_boss")
+    // Add corrupted eye to lone citadel loot tables
+    event.addTableModifier("nova_structures:chests/lone_citadel/c_vault_boss")
         .randomChance(1.0)
         .addLoot("endrem:corrupted_eye")
-        // Replace undead soul by skeleton horse trophy
-        event.addTableModifier("minecraft:entities/skeleton_horse")
+    // Replace undead soul by skeleton horse trophy
+    event.addTableModifier("minecraft:entities/skeleton_horse")
         .replaceLoot("endrem:undead_soul", "handcrafted:skeleton_horse_trophy", true)
-        // Replace Gardian eye by Gardian eye sklera
-        event.addTableModifier("minecraft:entities/elder_guardian")
+    // Replace Gardian eye by Gardian eye sklera
+    event.addTableModifier("minecraft:entities/elder_guardian")
         .replaceLoot("endrem:guardian_eye", "kubejs:guardian_eye_sclera", true)
-        // Replace Cold eye by its fragment
-        event.addTableModifier("minecraft:chests/igloo_chest")
-        .replaceLoot("endrem:cold_eye", "kubejs:cold_eye_fragment", true)
-        // Add Cold eye to sandworm loot table
+    // Replace Cold eye by its fragment
+    event.addTableModifier(LootType.CHEST)
+        .replaceLoot("endrem:cold_eye", "minecraft:emerald", true)
+    // Add Cold eye to sandworm loot table
         event.addTableModifier("block_factorys_bosses:bosses/yeti")
             .addLoot("endrem:cold_eye")
+    // Replace Nether Eye by Rose gold ingot
+    event.addTableModifier("minecraft:chests/nether_bridge")
+        .replaceLoot("endrem:nether_eye", "create_rosegold:rose_gold_ingot")
     })
 
 // const aetherFilter = ItemFilter.custom(item => {
