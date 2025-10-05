@@ -104,7 +104,8 @@ ServerEvents.recipes(event => {
             withChance('create:experience_nugget', 0.5)
         ],        
         [
-            '2x minecraft:iron_ingot',
+            'minecraft:iron_ingot',
+            'minecraft:iron_ingot',
             '#create_ironworks:carbon_dust',
             '#create_ironworks:carbon_dust',
             '#create_ironworks:carbon_dust',
