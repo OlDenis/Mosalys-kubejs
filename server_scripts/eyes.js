@@ -1,15 +1,5 @@
 // requires: endrem
 
-// requires: aether
-// requires: betterarcheology
-// requires: betterdeserttemples
-// requires: handcrafted
-// requires: irons_spellbooks
-// requires: nova_structures
-// requires: sweety_archaeology
-// requires: terralith
-// requires: twilightforest
-// requires: undergarden
 
 // Replace End remaster's eyes with shards that will be used to craft them
 // Old Eye fragment loot tables
@@ -133,8 +123,8 @@ LootJS.modifiers(event => {
     event.addTableModifier(LootType.CHEST)
         .replaceLoot("endrem:lost_eye", "minecraft:bread", true)
     // Replace corrupted eye by bread
-    event.addTableModifier(LootType.CHEST)
-        .removeLoot("endrem:corrupted_eye")
+    event.addTableModifier("minecraft:chests/pillager_outpost")
+        .replaceLoot("endrem:corrupted_eye", "create_rosegold:rose_gold_nugget")
     // Add corrupted eye to lone citadel loot tables
     event.addTableModifier("nova_structures:chests/lone_citadel/c_vault_boss")
         .randomChance(1.0)
