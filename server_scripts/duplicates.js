@@ -508,6 +508,36 @@ ServerEvents.recipes(event => {
         }
     )
 
+    // Pineapple
+    event.shapeless(
+        'fruitsdelight:pineapple',
+        'pineapple_delight:pineapple'
+    )
+    event.remove({id: 'pineapple_delight:cut/pineapple_side'})
+    event.recipes.farmersdelight.cutting(
+        'fruitsdelight:pineapple',
+        '#c:tools/knife',
+        [
+            Item.of('pineapple_delight:pineapple_side', 2),
+            'fruitsdelight:pineapple_sapling',
+            ChanceResult.of('fruitsdelight:pineapple_sapling', 0.5)
+        ]
+    );
+    event.remove({id: 'pineapple_delight:cooking/pineapple_fried_rice'})
+    event.recipes.farmersdelight.cooking(
+        "meals",
+        [
+        "pineapple_delight:pineapple_side",
+        "#c:crops/rice",
+        "minecraft:carrot",
+        "#c:eggs"
+        ],
+        "pineapple_delight:pineapple_fried_rice",
+        1.0,
+        200,
+        "fruitsdelight:pineapple"
+    );
+
     // THIS LINE IS ALSO IMPORTANT!
     // IT MUST BE THE LAST LINE IN THE EVENT HANDLER
     event.recipes.create.finalize();

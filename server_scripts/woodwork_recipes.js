@@ -1,10 +1,6 @@
 // priority: 2
 // requires: woodworks
 
-
-
-
-
 // Data
 const wood_types = {
     "minecraft": [
@@ -170,9 +166,6 @@ const special_log_tags = {
     "aether": {
         "skyroot" : "crafts_skyroot_planks"
     },
-    "ars_nouveau" : {
-        "archwood" : "blazing_logs"
-    },
     "pastel": {
         "slate_noxwood": "slate_noxcap_stems",
         "ebony_noxwood": "ebony_noxcap_stems",
@@ -287,6 +280,74 @@ const mod_items = {
                 "id": "beam",
                 "amount": 4
             }
+        ],
+        "decorativepaths": [
+            {
+                "id": "planks_path_01",
+                "amount": 4
+            },
+            {
+                "id": "planks_path_02",
+                "amount": 4
+            },
+            {
+                "id": "planks_path_03",
+                "amount": 4
+            },
+            {
+                "id": "planks_path_04",
+                "amount": 4
+            },
+            {
+                "id": "planks_path_05",
+                "amount": 4
+            },
+            {
+                "id": "planks_path_06",
+                "amount": 4
+            }
+        ],
+        "decorativepavers": [
+            {
+                "id": "paver_01",
+                "amount": 4
+            },
+            {
+                "id": "paver_02",
+                "amount": 4
+            },
+            {
+                "id": "paver_03",
+                "amount": 4
+            },
+            {
+                "id": "paver_04",
+                "amount": 4
+            },
+            {
+                "id": "paver_05",
+                "amount": 4
+            },
+            {
+                "id": "paver_06",
+                "amount": 4
+            },
+            {
+                "id": "paver_07",
+                "amount": 4
+            },
+            {
+                "id": "paver_08",
+                "amount": 4
+            },
+            {
+                "id": "paver_09",
+                "amount": 4
+            },
+            {
+                "id": "paver_10",
+                "amount": 4
+            }
         ]
     },
     "planks": {
@@ -329,6 +390,48 @@ const mod_items = {
             },
             {
                 "id": "planks_path_06",
+                "amount": 1
+            }
+        ],
+        "decorativepavers": [
+            {
+                "id": "paver_01",
+                "amount": 1
+            },
+            {
+                "id": "paver_02",
+                "amount": 1
+            },
+            {
+                "id": "paver_03",
+                "amount": 1
+            },
+            {
+                "id": "paver_04",
+                "amount": 1
+            },
+            {
+                "id": "paver_05",
+                "amount": 1
+            },
+            {
+                "id": "paver_06",
+                "amount": 1
+            },
+            {
+                "id": "paver_07",
+                "amount": 1
+            },
+            {
+                "id": "paver_08",
+                "amount": 1
+            },
+            {
+                "id": "paver_09",
+                "amount": 1
+            },
+            {
+                "id": "paver_10",
                 "amount": 1
             }
         ],
@@ -487,6 +590,13 @@ const missing_chest_variant = [
     'samurai_dynasty:red_maple_planks'
 ]
 
+// Utility functions
+function pad(num, size) {
+    var s = "000" + num;
+    return s.substr(s.length - size);
+}
+
+// Sawmill recipe generator
 function sawmillRecipe(ingredient, result_id, result_amount, is_logs){
     // Returns the correct dict for a sawmill recipe
     // Add sawmill recipes
@@ -518,6 +628,7 @@ function sawmillRecipe(ingredient, result_id, result_amount, is_logs){
     
 }
 
+// Functions adding sawmill recipes
 function modItemSawmillRecipe(event, mod_items, wood_type, namespace){
     // Register sawmill recipe of modded items made of vanilla wood
     for (const [ingredient_part, mod_results] of Object.entries(mod_items)) {
@@ -577,9 +688,12 @@ function modItemSawmillRecipe(event, mod_items, wood_type, namespace){
 
             }
         }
-        // Remove stonecutting recipe (Decorative paths)
+        // Remove stonecutting recipe (Decorative paths and pavers)
         for (let i = 1; i < 7; i++) {
             event.remove({ output: "decorativepaths:" + wood_type + "_planks_path_0" + i })
+        }
+        for (let i = 1; i < 11; i++) {
+            event.remove({ output: "decorativepavers:" + wood_type + "_paver_" + pad(i,2)})
         }
     }
 }
@@ -597,6 +711,9 @@ function vanillaItemSawmillRecipe(event, vanilla_items, wood_type, namespace){
         // Special tags for aether and ars_nouveau and other exceptions
         if (Object.keys(special_log_tags).includes(namespace) && Object.keys(special_log_tags[namespace]).includes(wood_type)){
             ingredient = namespace + ":" + special_log_tags[namespace][wood_type];
+        }
+        else if (namespace === "ars_nouveau" && wood_type === "archwood" && ingredient_part === "logs"){
+            ingredient ="c:logs/archwood";
         }
             for (const result of vanilla_results) {
                 // Define proper item id for the result
@@ -769,6 +886,34 @@ ServerEvents.recipes(event => {
             }
         }
     }
+    event.recipes.create.cutting(
+        'luminousworld:stripped_baobab_log',
+        'luminousworld:bao_bob_log'
+    )
+    event.remove({id: 'create:cutting/runtime_generated/compat/luminousworld/baobab_log_to_stripped_baobab_log'})
+
+    // Remove shafts crafting recipe (create encased)
+    for (const w_type of wood_types["minecraft"]){
+        event.remove({output: `createcasing:${w_type}_shaft`})
+    }
+    // Remove items from stonecutting and put them in sawmill
+    event.remove({output: 'barbequesdelight:tray'})
+    event.custom(sawmillRecipe("minecraft:planks", "barbequesdelight:tray", 1, true))
+        .id('barbequesdelight:tray_from_planks_sawing')
+    event.custom(sawmillRecipe("minecraft:logs", "barbequesdelight:tray", 4, true))
+        .id('barbequesdelight:tray_from_logs_sawing')
+    event.recipes.create.cutting(
+    'barbequesdelight:tray',
+        '#minecraft:planks'
+    ).id('barbequesdelight:tray_from_planks_cutting')
+    
+    event.remove({output: 'barbequesdelight:basin'})
+    event.custom(sawmillRecipe("minecraft:logs", "barbequesdelight:basin", 2, true))
+    event.recipes.create.cutting(
+    'barbequesdelight:basin',
+        '#minecraft:logs'
+    ).id('barbequesdelight:basin_from_logs_cutting')
+
     // Foxy pillar
     const foxy_r = sawmillRecipe("minecraft:spruce_logs", "abyssal_decor:foxy_pillar", 1, true)
     event.custom(foxy_r);
