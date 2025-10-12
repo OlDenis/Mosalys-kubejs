@@ -868,6 +868,18 @@ ServerEvents.recipes(event => {
             'A': '#kubejs:vanilla_chest_ingredient'
         }
     )
+    event.shaped(
+        'minecraft:bookshelf',
+        [
+            'AAA',
+            'BBB',
+            'AAA'
+        ],
+        { 
+            'A': '#kubejs:vanilla_chest_ingredient', 
+            'B': 'minecraft:book' 
+        }
+    )
     // THIS LINE IS IMPORTANT!
     // IT MUST BE THE FIRST LINE IN THE EVENT HANDLER
     addCreateRecipeHandler(event);
