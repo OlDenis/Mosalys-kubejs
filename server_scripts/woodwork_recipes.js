@@ -819,6 +819,9 @@ ServerEvents.tags("item", event => {
     for (const plank_type of wood_types["regions_unexplored"]){
         event.add("kubejs:vanilla_chest_ingredient", "regions_unexplored:" + plank_type + "_planks")
     }
+    for (const plank_type of wood_types["would"]){
+        event.add("kubejs:vanilla_chest_ingredient", "would:" + plank_type + "_planks")
+    }
 
     // Luminous nether logs
     event.add("luminous_nether:withered_logs", "luminous_nether:withered_log")
