@@ -814,13 +814,19 @@ function modItemFromModdedWoodSawmillRecipe(event, mod_items, wood_type, namespa
 ServerEvents.tags("item", event => {
     // Missing chest variants
     for (const planks_type of missing_chest_variant){
-        event.add("kubejs:vanilla_chest_ingredient", planks_type)
+        event.add("kubejs:mod_planks", planks_type)
     }
-    for (const plank_type of wood_types["regions_unexplored"]){
-        event.add("kubejs:vanilla_chest_ingredient", "regions_unexplored:" + plank_type + "_planks")
+    for (const mod_namespace of Object.keys(wood_types)){
+        if (mod_namespace !== "minecraft" && mod_namespace !== "luminousworld" && mod_namespace !== "pastel"){
+            for (const plank_type of wood_types[mod_namespace]){
+                event.add("kubejs:mod_planks", mod_namespace + ":" + plank_type + "_planks")
+                event.add("kubejs:mod_slabs", mod_namespace + ":" + plank_type + "_slab")
+            }
+        }
     }
-    for (const plank_type of wood_types["would"]){
-        event.add("kubejs:vanilla_chest_ingredient", "would:" + plank_type + "_planks")
+    for (const wood_type of wood_types["minecraft"]){
+        event.add("woodworks:chests", `woodworks:${wood_type}_chest`)
+        event.add("woodworks:trapped_chests", `woodworks:trapped_${wood_type}_chest`)
     }
 
     // Luminous nether logs
@@ -868,7 +874,7 @@ ServerEvents.recipes(event => {
             'AAA'
         ],
         {
-            'A': '#kubejs:vanilla_chest_ingredient'
+            'A': '#kubejs:mod_planks'
         }
     )
     event.shaped(
@@ -879,10 +885,51 @@ ServerEvents.recipes(event => {
             'AAA'
         ],
         { 
-            'A': '#kubejs:vanilla_chest_ingredient', 
+            'A': '#kubejs:mod_planks', 
             'B': 'minecraft:book' 
         }
     )
+    event.remove({id: 'woodworks:oak_beehive'})
+    event.remove({id: 'aether:skyroot_beehive'})
+    event.shaped(
+        'minecraft:beehive',
+        [
+            'AAA',
+            'BBB',
+            'AAA'
+        ],
+        { 
+            'A': '#kubejs:mod_planks', 
+            'B': 'minecraft:honeycomb' 
+        }
+    )
+
+    // Convert wood chest variants to vanilla one
+    event.shapeless(
+        'minecraft:chest',
+        [
+            '#woodworks:chests'
+        ]
+    ).id('kubejs:chest_from_wood_chests')
+    event.shapeless(
+        'minecraft:trapped_chest',
+        [
+            '#woodworks:trapped_chests'
+        ]
+    ).id('kubejs:trapped_chest_from_wood_chests')
+
+    // Rework twilight forest trapped chest recipes
+    for (const wood_type of wood_types["twilightforest"]){
+        event.remove({id: `twilightforest:wood/${wood_type}_trapped_chest`})
+        event.shapeless(
+            `twilightforest:${wood_type}_trapped_chest`,
+            [
+                'minecraft:tripwire_hook',
+                `twilightforest:${wood_type}_chest`
+            ]
+        ).id(`kubejs:trapped_${wood_type}_chest_vanilla_style`)
+    }
+    
     // THIS LINE IS IMPORTANT!
     // IT MUST BE THE FIRST LINE IN THE EVENT HANDLER
     addCreateRecipeHandler(event);
