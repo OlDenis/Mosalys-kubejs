@@ -139,7 +139,11 @@ ServerEvents.recipes(event => {
     )
     event.remove({id: 'create_ironworks:materials/steel/ingot_from_block'})
     
-
+    event.replaceInput(
+        {id: 'create_ironworks:materials/steel/upgrade_template'},
+        'create_ironworks:steel_ingot',
+        'alloyed:steel_ingot'
+    )
 
 
     // THIS LINE IS ALSO IMPORTANT!
