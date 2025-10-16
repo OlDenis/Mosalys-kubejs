@@ -35,7 +35,7 @@ ServerEvents.recipes(event => {
             'create:precision_mechanism' // output
         ],
         
-        'create:gold_sheet', // input
+        'create:golden_sheet', // input
        [
            event.recipes.createDeploying('create:precision_mechanism', ['create:precision_mechanism', 'create:cogwheel']),
            event.recipes.createDeploying('create:precision_mechanism', ['create:precision_mechanism', 'create:large_cogwheel']),

@@ -5,6 +5,7 @@
 
 ServerEvents.tags("item", event => {
     event.add("kubejs:hammer", "handcrafted:hammer")
+    event.add("kubejs:hammer", "createdieselgenerators:hammer")
 })
 
 ServerEvents.tags("block", event =>{
