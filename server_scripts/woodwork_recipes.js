@@ -461,6 +461,10 @@ const mod_items = {
             {
                 "id": "carved",
                 "amount": 1
+            },
+            {
+                "id": "beam",
+                "amount": 1
             }
         ]
     },
