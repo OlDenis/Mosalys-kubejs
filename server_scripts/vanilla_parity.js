@@ -3,6 +3,4 @@ ServerEvents.recipes(event => {
         'minecraft:netherite_ingot', 
         'alloyed:bronze_ingot'
     )
-    
-
 });
