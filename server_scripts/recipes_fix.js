@@ -13,6 +13,7 @@ ServerEvents.recipes(event => {
     'create_compressed:crushed_tin_pile'
   ) 
   event.remove({id: 'create_compressed:crushed_raw_tin'})
+  event.remove({id: 'create_compressed:crushed_raw_tin_pile'})
   
 }
 )
