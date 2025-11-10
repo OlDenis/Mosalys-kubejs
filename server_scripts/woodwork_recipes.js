@@ -908,6 +908,12 @@ ServerEvents.recipes(event => {
         }
     )
 
+    event.replaceInput(
+        {id: 'woodworks:oak_ladder'},
+        'minecraft:oak_planks',
+        'minecraft:stick'
+    )
+
     // Convert wood chest variants to vanilla one
     event.shapeless(
         'minecraft:chest',
