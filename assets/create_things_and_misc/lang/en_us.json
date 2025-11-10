@@ -1,0 +1,6 @@
+{
+    "block.create_things_and_misc.sturdy_sheet_block": "Train Block",
+    "block.create_things_and_misc.sturdy_sheet_block.tooltip": "A sturdy sheet block made from compressed sheets.",
+    "block.create_things_and_misc.sturdy_sheet_slab": "Train Block Slab",
+    "block.create_things_and_misc.sturdy_sheet_slab_stairs": "Train Block Stairs"
+}

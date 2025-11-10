@@ -1,4 +1,7 @@
 // priority: 0
+// requires: create
+
+// Custom helper to create an item object with a chance property
 
 function withChance(item, chance, count) {
     if (count == undefined) {

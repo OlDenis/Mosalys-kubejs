@@ -1,13 +1,12 @@
-// requires create_utlimate_factory, create_d2d, garnished, create_ironworks
-
-const ultimate = 'create_ultimate_factory:';
+const ultimate = 'create_ultimate_factory';
 const recipesToRemove = [
     "compacting_coalblock",
     "compacting_calcite",
     "crushing_blackstone",
     "crushing_seagrass",
     "crushing_netherite",
-    "crushing_scoria"
+    "crushing_scoria",
+    "haunting_charcoal"
 ];
 
 ServerEvents.recipes(event => {
@@ -17,19 +16,9 @@ ServerEvents.recipes(event => {
 
     // Remove the recipes from the ultimate factory mod
     for (const recipe of recipesToRemove) {
-        event.remove({id: ultimate + recipe});
+        event.remove({id: `${ultimate}:${recipe}`});
     }
     event.remove({output: "minecraft:wither_skeleton_skull"});
-    // Convert charcoal dust into coal pieces
-    event.recipes.create.compacting(
-        [
-            "create_d2d:coal_piece",
-            "create_d2d:coal_piece",
-            withChance("create_d2d:coal_piece", 0.5),
-            withChance("create_d2d:coal_piece", 0.5)
-        ],
-        "create_ironworks:charcoal_dust"
-    ).heated().id("kubejs:charcoal_dust_compacting");
 
     // Blast coal dust into graphite powder
     event.blasting(
@@ -57,7 +46,7 @@ ServerEvents.recipes(event => {
         [
            withChance("kubejs:impure_diamond", 0.80),
            withChance("minecraft:diamond", 0.005),
-           withChance("kubejs:crushed_deepslate", 0.15),
+           withChance("neodsprocessing:deepslate_chunk", 0.15),
         ],
         [
             "kubejs:graphite",
@@ -74,7 +63,7 @@ ServerEvents.recipes(event => {
         [
             withChance("minecraft:gravel", 0.6),
             withChance("kubejs:graphite_powder", 0.1),
-            withChance("create_d2d:diamond_shard", 0.02),
+            withChance("dndesires:diamond_shard", 0.02),
             withChance("create:experience_nugget", 0.5)
         ],
         "kubejs:impure_diamond"

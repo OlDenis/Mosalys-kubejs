@@ -1,0 +1,7 @@
+{
+    "block.create_ironworks.rose_quartz_block": "Rose Quartz Sheet Block",
+    "block.create_ironworks.steel_block": "Block of Industrial Steel",
+    "item.create_ironworks.steel_ingot": "Industrial Steel Ingot",
+    "item.create_ironworks.steel_nugget": "Industrial Steel Nugget",
+    "item.create_ironworks.steel_sheet": "Industrial Steel Sheet"
+}
