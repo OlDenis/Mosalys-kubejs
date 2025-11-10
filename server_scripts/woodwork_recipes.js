@@ -870,17 +870,17 @@ ServerEvents.tags("item", event => {
 
 ServerEvents.recipes(event => {
     // Add vanilla chest recipe for 
-    event.shaped(
-        'minecraft:chest',
-        [
-            'AAA',
-            'A A',
-            'AAA'
-        ],
-        {
-            'A': '#kubejs:mod_planks'
-        }
-    )
+    // event.shaped(
+    //     'minecraft:chest',
+    //     [
+    //         'AAA',
+    //         'A A',
+    //         'AAA'
+    //     ],
+    //     {
+    //         'A': '#kubejs:mod_planks'
+    //     }
+    // )
     event.shaped(
         'minecraft:bookshelf',
         [
