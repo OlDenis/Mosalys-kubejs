@@ -538,6 +538,44 @@ ServerEvents.recipes(event => {
         "fruitsdelight:pineapple"
     );
 
+    // Ash
+    event.remove({id: "luminous_nether:gunpowderecipe"});
+    event.remove({id: "regions_unexplored:ash"});
+    event.shapeless(
+        'regions_unexplored:ash',
+        '9x #c:dusts/ash'
+    );
+    event.shapeless(
+        Item.of('supplementaries:ash', 9),
+      'regions_unexplored:ash'
+    );
+    event.shapeless(
+        'luminous_nether:ashes',
+        'supplementaries:ash'
+    );
+    event.shapeless(
+        'supplementaries:ash',
+        'luminous_nether:ashes'
+    );
+    event.shapeless(
+        'farmersdelight:organic_compost',
+        [
+            '#kubejs:dirt',
+            '2x farmersdelight:straw',
+            '2x minecraft:bone_meal',
+            '4x #c:dusts/ash'
+        ]
+    )
+    event.shapeless(
+        'farmersdelight:organic_compost',
+        [
+            '#kubejs:dirt',
+            '2x farmersdelight:straw',
+            '2x minecraft:rotten_flesh',
+            '4x #c:dusts/ash'
+        ]
+    )
+
     // THIS LINE IS ALSO IMPORTANT!
     // IT MUST BE THE LAST LINE IN THE EVENT HANDLER
     event.recipes.create.finalize();
@@ -599,10 +637,13 @@ LootJS.modifiers(event => {
     event.addTableModifier(LootType.CHEST).removeLoot(spearFilter)
 })
 
-// Remove tags from items
-// ServerEvents.tags('item', event => {
-//     for (const material of ['iron', 'gold', 'diamond']) {
-//         event.removeAllTagsFrom('simplyswords:' + material + '_spear');
-//     }
-// });
+ServerEvents.tags('item', event => {
+    // for (const material of ['iron', 'gold', 'diamond']) {
+    //     event.removeAllTagsFrom('simplyswords:' + material + '_spear');
+    // }
+    event.add('c:dusts/ash', 'luminous_nether:ashes');
+    event.add('kubejs:dirt', 'minecraft:dirt');
+    event.add('kubejs:dirt', 'aether:aether_dirt');
+    event.add('kubejs:dirt', 'undergarden:deepsoil');
+});
 
