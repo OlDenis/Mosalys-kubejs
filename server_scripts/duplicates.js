@@ -32,7 +32,7 @@ const armor_slots = ['helmet', 'chestplate', 'leggings', 'boots'];
 
 // Salt items
 const salt_bag = 'cratedelight:salt_bag';
-const salt = 'expandeddelight:salt';
+const salt = 'createfood:salt';
 const salt_rock = 'expandeddelight:salt_rock';
 const salt_ore = 'c:ores/salt';
 const salt_compound = 'garnished:salt_compound';
@@ -140,8 +140,14 @@ ServerEvents.recipes(event => {
         );
     // Salt recipes
     event.remove({id: "expandeddelight:salt"});
+    event.remove({id: "expandeddelight:salt_bag"});
     event.shapeless(
-        Item.of(salt, 9), [salt_bag]
+        Item.of(salt, 9), 
+        salt_bag
+    );
+    event.shapeless(
+        salt_bag,
+        Item.of(salt, 9)
     );
     event.remove({output: salt_rock});
     event.recipes.create.milling(
@@ -166,14 +172,21 @@ ServerEvents.recipes(event => {
         ],
         crushed_salt
     );
-    event.recipes.create.mixing(
-        salt,
-        {
-            "type": "fluid_stack",
-            "amount": 1000,
-            "fluid": "minecraft:water"
-        }
-    ).heated()
+    event.replaceInput(
+        {output: "createfood:salt_dough"},
+        "#c:salt",
+        "#c:dusts/salt"
+    );
+    event.remove({id: "sliceanddice:cooking/createfood/farmersdelight/cooking/salt_from_cooking_0"})
+    event.recipes.farmersdelight.cutting(
+        salt_rock,
+        'expandeddelight:crushing_mallet',
+        [
+            Item.of(salt, 2),
+            withChance(salt, 0.15)
+        ]
+    )
+    event.remove({id: "expandeddelight:cutting/salt_rock"})
 
     // Simply Swords spears
     for (const material of ss_materials) {
@@ -624,6 +637,8 @@ RecipeViewerEvents.removeEntries('item', event => {
     // Chorium
     event.remove('createcasing:chorium_ingot')
 
+    // Salt
+    event.remove('expandeddelight:salt')
 })
 
 // Remove items from loot tables
@@ -645,5 +660,7 @@ ServerEvents.tags('item', event => {
     event.add('kubejs:dirt', 'minecraft:dirt');
     event.add('kubejs:dirt', 'aether:aether_dirt');
     event.add('kubejs:dirt', 'undergarden:deepsoil');
+    event.add('kubejs:dirt', 'undergarden:deepsoil');
+    event.add('c:dusts/salt', 'createfood:salt');
 });
 
