@@ -481,17 +481,8 @@ ServerEvents.recipes(event => {
     event.recipes.stonecutting('handcrafted:terracotta_plate', 'clayworks:terracotta_slab');
 
     // Vertical vaults
-    event.remove({output:"create_connected:item_silo"})
-    event.shaped(
-        Item.of('create_vibrant_vaults:vertical_item_vault', 1),
-        [
-            'ABA'
-        ],
-        {
-            A : 'create:iron_sheet',
-            B : 'minecraft:barrel'
-        }
-    )
+    event.remove({output:"create_connected:item_silo"})    
+
     // Chorium
     event.remove({output:'createcasing:chorium_ingot'})
 
