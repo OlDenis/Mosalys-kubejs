@@ -6,7 +6,8 @@ const recipesToRemove = [
     "crushing_seagrass",
     "crushing_netherite",
     "crushing_scoria",
-    "haunting_charcoal"
+    "haunting_charcoal",
+    "compacting_tuff"
 ];
 
 ServerEvents.recipes(event => {
