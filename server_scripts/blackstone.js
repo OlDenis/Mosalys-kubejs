@@ -46,5 +46,5 @@ ServerEvents.recipes(event => {
 // Cobalt Nylium loot table
 LootJS.modifiers(event => {
     event.addTableModifier("regions_unexplored:blocks/cobalt_nylium")
-    .replaceLoot("minecraft:blackstone", "stoneworks:cobbled_blackstone", true)
+    .replaceLoot("minecraft:blackstone", "eternal_nether:cobbled_blackstone", true)
 });
