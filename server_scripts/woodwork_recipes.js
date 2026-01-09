@@ -16,14 +16,34 @@ const wood_types = {
         "crimson",
         "warped"
     ],
-    "wetland_whimsy": [
-        "bald_cypress"
+    // "abyssal_decor": [  // No tags
+    //     // "ancient_birch",
+    //     "white_wood",
+    //     "blackwood",
+    //     "cinnamon" // needs extra attention
+    // ],
+    "aether": [
+        "skyroot",
     ],
-    "luminousworld": [
-        "white_oak",
-        "palm", 
-        "auburn",
-        "baobab" // Cursed naming convention
+    "ars_nouveau": [
+        "archwood"
+    ],
+    "betterarcheology": [
+        "rotten"        // Doesn't need tag (only log)
+    ],
+    "crabbersdelight": [
+        "palm"
+    ],
+    "deeperdarker": [
+        "echo",
+        "bloom" // stems instead of logs
+    ],
+    "deep_aether": [
+        "roseroot",
+        "yagroot",
+        "cruderoot",
+        "conberry",
+        "sunroot"
     ],
     "eternal_starlight": [
         "lunar",
@@ -33,27 +53,29 @@ const wood_types = {
         "torreya",
         "jinglestem"
     ],
-    "moresnifferflowers": [
-        "vivicus",
-        "corrupted"
+    "expandeddelight": [
+        "cinnamon"
     ],
     "garnished": [
         "nut",
         "sepia" // stems instead of logs
     ],
-    "ars_nouveau": [
-        "archwood"
+    "luminousworld": [
+        "white_oak",
+        "palm", 
+        "auburn",
+        "baobab" // Cursed naming convention
     ],
-    "aether": [
-        "skyroot",
-
+    "luminous_nether": [
+        "mushroom",
+        "withered"
     ],
-    "deep_aether": [
-        "roseroot",
-        "yagroot",
-        "cruderoot",
-        "conberry",
-        "sunroot"
+    "moresnifferflowers": [
+        "vivicus",
+        "corrupted"
+    ],
+    "mynethersdelight":[
+        "powdery"       // blocks instead of logs (like bamboo)
     ],
     "twilightforest": [
         "twilight_oak",
@@ -64,34 +86,6 @@ const wood_types = {
         "transformation",
         "mining",
         "sorting"
-    ],
-    "deeperdarker": [
-        "echo",
-        "bloom" // stems instead of logs
-    ],
-    // "abyssal_decor": [  // No tags
-    //     // "ancient_birch",
-    //     "white_wood",
-    //     "blackwood",
-    //     "cinnamon" // needs extra attention
-    // ],
-    "expandeddelight": [
-        "cinnamon"
-    ],
-    "mynethersdelight":[
-        "powdery"       // blocks instead of logs (like bamboo)
-    ],
-    "betterarcheology":[
-        "rotten"        // Doesn't need tag (only log)
-    ],
-    "vanillabackport":[
-        "pale_oak"
-    ],
-    "undergarden":[
-        "ancient_root",
-        "smogstem",
-        "grongle",
-        "wigglewood"
     ],
     "pastel":[
         "slate_noxwood",
@@ -141,9 +135,17 @@ const wood_types = {
         "willow",
         "yellow_bioshroom"
     ],
-    "luminous_nether": [
-        "mushroom",
-        "withered"
+    "undergarden": [
+        "ancient_root",
+        "smogstem",
+        "grongle",
+        "wigglewood"
+    ],
+    "vanillabackport": [
+        "pale_oak"
+    ],
+    "wetland_whimsy": [
+        "bald_cypress"
     ],
     "would": [
         "willow",
