@@ -1,1 +1,1 @@
-Platform.mods.kubejs.name = 'Not a Mod'
+Platform.mods.kubejs.name = 'Mosalys Tweaks'

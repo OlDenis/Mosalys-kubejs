@@ -230,16 +230,16 @@
   "item.immersive_weathering.crimson_scales": "Crimson Scales",
   "item.immersive_weathering.warped_scales": "Warped Scales",
 
-  "block.immersive_weathering.ivy": "Spreading Ivy",
+  "block.immersive_weathering.ivy": "Ivy",
   "block.immersive_weathering.dune_grass": "Dune Grass",
-  "block.immersive_weathering.weeds": "Spreading Weeds",
+  "block.immersive_weathering.weeds": "Weeds",
   "block.immersive_weathering.soot": "Soot",
   "block.immersive_weathering.sand_layer_block": "Sand Pile",
   "block.immersive_weathering.red_sand_layer_block": "Red Sand Pile",
   "item.immersive_weathering.tallow": "Tallow",
 
 
-  "block.immersive_weathering.silt": "Earthen Silt",
+  "block.immersive_weathering.silt": "Silt",
   "block.immersive_weathering.grassy_silt": "Grassy Silt",
   "block.immersive_weathering.rooted_silt": "Rooted Silt",
   "block.immersive_weathering.rooted_grassy_silt": "Rooted Grassy Silt",
@@ -261,7 +261,7 @@
   "block.immersive_weathering.grassy_earthen_clay": "Grassy Earthen Clay",
   "block.immersive_weathering.earthen_clay_farmland": "Earthen Clay Farmland",
 
-  "block.immersive_weathering.permafrost": "Rocky Permafrost",
+  "block.immersive_weathering.permafrost": "Permafrost",
   "block.immersive_weathering.grassy_permafrost": "Grassy Permafrost",
 
   "block.immersive_weathering.mulch_block": "Mulch",

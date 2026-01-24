@@ -9,7 +9,7 @@ ServerEvents.recipes(event => {
     event.remove({ id: "regions_unexplored:blackstone_from_blackstone_cluster" })
 
     event.shaped(
-        'stoneworks:cobbled_blackstone',
+        'eternalnether:cobbled_blackstone',
         [
             'BB',
         ],
@@ -20,23 +20,26 @@ ServerEvents.recipes(event => {
 
     event.stonecutting(
         Item.of('regions_unexplored:blackstone_cluster', 2),
-        'stoneworks:cobbled_blackstone'
+        'eternalnether:cobbled_blackstone'
     ).id('kubejs:blackstone_cluster_from_cobbled_blackstone');
-
-    event.recipes.create.crushing(
-        Item.of('regions_unexplored:blackstone_cluster', 2),
-        'stoneworks:cobbled_blackstone'
-    ).id('kubejs:blackstone_cluster_crushing');
 
     // Blackstone processing
     event.recipes.create.crushing(
-        withChance('stoneworks:cobbled_blackstone', 0.85),
+        withChance('eternalnether:cobbled_blackstone', 0.95),
         'minecraft:blackstone'
     ).id('kubejs:blackstone_crushing');
 
+    event.recipes.create.crushing(
+        [
+            withChance('stoneworks:cobbled_blackstone', 0.50),
+            'regions_unexplored:blackstone_cluster'
+        ],
+        'eternalnether:cobbled_blackstone'
+    ).id('kubejs:cobbled_blackstone_crushing');
+
     event.remove({ id: 'create:haunting/blackstone' });
     event.recipes.create.haunting(
-        'stoneworks:cobbled_blackstone',
+        'eternalnether:cobbled_blackstone',
         '#c:cobblestones'
     ).id('kubejs:cobbled_blackstone_haunting');
     
@@ -46,5 +49,5 @@ ServerEvents.recipes(event => {
 // Cobalt Nylium loot table
 LootJS.modifiers(event => {
     event.addTableModifier("regions_unexplored:blocks/cobalt_nylium")
-    .replaceLoot("minecraft:blackstone", "eternal_nether:cobbled_blackstone", true)
+    .replaceLoot("minecraft:blackstone", "eternalnether:cobbled_blackstone", true)
 });

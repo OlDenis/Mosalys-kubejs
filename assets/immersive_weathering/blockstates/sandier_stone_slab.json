@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "immersive_weathering:block/sandy_stone_slab_1"
+    },
+    "type=double": {
+      "model": "immersive_weathering:block/sandy_stone_1"
+    },
+    "type=top": {
+      "model": "immersive_weathering:block/sandy_stone_slab_top_1"
+    }
+  }
+}
