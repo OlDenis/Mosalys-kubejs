@@ -1,6 +1,6 @@
 *_scripts/*_example.js
 */jsconfig.json
-client_scripts/*
 config/*
 *.py
 backup/*
+assets/immersive_weathering
