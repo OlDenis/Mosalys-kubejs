@@ -109,6 +109,34 @@ ServerEvents.recipes(event => {
         blockSetRecipes(coated_block, recipe_id)
     }
 
+    function farmersRecipe(output, o_count, input, i_count, tool, r_id){
+        event.recipes.farmersdelight.cutting(
+           Ingredient.of(input, i_count),
+           tool,
+           Item.of(output, o_count)
+        ).id(r_id);
+    }
+    // Spores crafting
+    farmersRecipe(
+        'kubejs:crimson_spores', 4,
+        'minecraft:weeping_vines', 1,
+        '#c:tools/knife',   'kubejs:crimson_spores_from_weeping_vines'
+    );
+    farmersRecipe(
+        'kubejs:crimson_spores', 2,
+        'minecraft:crimson_roots', 1,
+        '#c:tools/knife',   'kubejs:crimson_spores_from_crimson_roots'
+    );
+    farmersRecipe(
+        'kubejs:warped_spores', 4,
+        'minecraft:warped_roots', 1,
+        '#c:tools/knife',   'kubejs:warped_spores_from_warped_roots'
+    );
+    farmersRecipe(
+        'kubejs:warped_spores', 2,
+        'minecraft:twisting_vines', 1,
+        '#c:tools/knife',   'kubejs:warped_spores_from_twisting_vines'
+    );
 
     // Moss clump crafting
     event.shapeless(
@@ -127,7 +155,26 @@ ServerEvents.recipes(event => {
         {
             M: 'kubejs:moss_clump'
         }
-    ).id('kubejs:moss_carpet_from_moss_clump'); 
+    ).id('kubejs:moss_carpet_from_moss_clump');
+
+    // Aether moss clump crafting
+    event.shapeless(
+        Item.of('kubejs:aether_moss_clump', 9),
+        'deep_aether:aether_moss_block'
+    ).id('kubejs:aether_moss_clump_from_moss_block');
+    event.shapeless(
+        'deep_aether:aether_moss_block',
+        Item.of('kubejs:aether_moss_clump', 9),
+    ).id('kubejs:moss_block_from_aether_moss_clump');
+    event.shaped(
+        Item.of('deep_aether:aether_moss_carpet', 1),
+        [
+            'MMM'
+        ],
+        {
+            M: 'kubejs:aether_moss_clump'
+        }
+    ).id('kubejs:moss_carpet_from_aether_moss_clump'); 
 
     // Generate mossy variants recipes
     for (let stone of stone_types){
@@ -310,7 +357,7 @@ coatBlocks( 'minecraft:sandstone', 'stoneworks:mossy_cobbled_sandstone', moss);
 coatBlocks( 'minecraft:red_sandstone', 'stoneworks:mossy_cobbled_red_sandstone', moss);
 coatBlocks( 'minecraft:quartz', 'stoneworks:mossy_cobbled_quartz', moss);
 coatBlocks( 'minecraft:basalt', 'stoneworks:mossy_cobbled_basalt', moss);
-coatBlocks( 'minecraft:deepslate', 'stoneworks:mossy_cobbled_deepslate', moss);
+coatBlocks( 'minecraft:cobbled_deepslate', 'stoneworks:mossy_cobbled_deepslate', moss);
 
 // Bricks variants
 coatBlocks('minecraft:stone_bricks', 'minecraft:mossy_stone_bricks', moss)
@@ -392,7 +439,6 @@ snowedBlocks('minecraft:cobblestone', 'immersive_weathering:snowy_cobblestone')
 snowedBlocks('minecraft:stone', 'immersive_weathering:snowy_stone')
 snowedBlocks('minecraft:stone_bricks', 'immersive_weathering:snowy_stone_bricks')
 snowedBlock('minecraft:chiseled_stone_bricks', 'immersive_weathering:snowy_chiseled_stone_bricks')
-snowedBlock('minecraft:dirt', 'immersive_weathering:snowy_dirt')
 
 snowedBlocks('immersive_weathering:snowy_cobblestone', 'dustydecorations:snowy_cobblestone')
 snowedBlocks('immersive_weathering:snowy_stone_bricks', 'dustydecorations:snowy_stone_bricks')
@@ -402,12 +448,16 @@ snowedBlocks('immersive_weathering:snowy_stone_bricks', 'dustydecorations:snowy_
 function crackBlock(cracked_block, base_block, brick){
     coatBlock(cracked_block, base_block, brick, 'pickaxe')
 }
+function crackBlocks(cracked_block, base_block, brick){
+    coatBlocks(cracked_block, base_block, brick, 'pickaxe')
+}
 
 crackBlock('minecraft:cracked_stone_bricks', 'minecraft:stone_bricks', 'immersive_weathering:stone_brick')
 crackBlock('minecraft:infested_cracked_stone_bricks', 'minecraft:infested_stone_bricks', 'immersive_weathering:stone_brick')
 crackBlock('minecraft:cracked_deepslate_bricks', 'minecraft:deepslate_bricks', 'immersive_weathering:deepslate_brick')
 crackBlock('minecraft:cracked_deepslate_tiles', 'minecraft:deepslate_tiles', 'immersive_weathering:deepslate_tile')
 crackBlock('minecraft:cracked_polished_blackstone_bricks', 'minecraft:polished_blackstone_bricks', 'immersive_weathering:blackstone_brick')
-crackBlock('minecraft:cracked_polished_nether_bricks', 'minecraft:polished_nether_bricks', 'minecraft:nether_brick')
-crackBlock('immersive_weathering:cracked_bricks', 'minecraft:bricks', 'minecraft:brick')
-crackBlock('immersive_weathering:cracked_prismarine_bricks', 'minecraft:prismarine_bricks', 'immersive_weathering:prismarine_brick')
+crackBlock('minecraft:cracked_nether_bricks', 'minecraft:nether_bricks', 'minecraft:nether_brick')
+crackBlocks('immersive_weathering:cracked_bricks', 'minecraft:bricks', 'minecraft:brick')
+crackBlocks('immersive_weathering:cracked_prismarine_bricks', 'minecraft:prismarine_bricks', 'immersive_weathering:prismarine_brick')
+crackBlock('stoneworks:cracked_prismarine_bricks', 'stoneworks:prismarine_bricks', 'immersive_weathering:prismarine_brick')

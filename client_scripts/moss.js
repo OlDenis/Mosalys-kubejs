@@ -80,7 +80,7 @@ coatBlocks('minecraft:sandstone', 'stoneworks:mossy_cobbled_sandstone', moss);
 coatBlocks('minecraft:red_sandstone', 'stoneworks:mossy_cobbled_red_sandstone', moss);
 coatBlocks('minecraft:quartz', 'stoneworks:mossy_cobbled_quartz', moss);
 coatBlocks('minecraft:basalt', 'stoneworks:mossy_cobbled_basalt', moss);
-coatBlocks('minecraft:deepslate', 'stoneworks:mossy_cobbled_deepslate', moss);
+coatBlocks('minecraft:cobbled_deepslate', 'stoneworks:mossy_cobbled_deepslate', moss);
 
 // Bricks variants
 coatBlocks('minecraft:stone_bricks', 'minecraft:mossy_stone_bricks', moss);
@@ -157,12 +157,35 @@ coatBlock('minecraft:dirt', 'immersive_weathering:sandy_dirt', sand, sand_sound,
 const snow = 'minecraft:snowball'
 const snow_sound = 'block.snow.place'
 // const snowParams = [snow, snow_sound, 'shovel', 'block.snow.break']
-coatBlocks('minecraft:cobblestone', 'immersive_weathering:snowy_cobblestone', snow, snow_sound, 'shovel', 'block.snow.break')
-coatBlocks('minecraft:stone', 'immersive_weathering:snowy_stone', snow, snow_sound, 'shovel', 'block.snow.break')
-coatBlocks('minecraft:stone_bricks', 'immersive_weathering:snowy_stone_bricks', snow, snow_sound, 'shovel', 'block.snow.break')
-coatBlock('minecraft:chiseled_stone_bricks', 'immersive_weathering:snowy_chiseled_stone_bricks', snow, snow_sound, 'shovel', 'block.snow.break')
-coatBlock('minecraft:dirt', 'immersive_weathering:snowy_dirt', snow, snow_sound, 'shovel', 'block.snow.break')
+coatBlocks(
+    'minecraft:cobblestone',
+     'immersive_weathering:snowy_cobblestone',
+     snow, snow_sound, 'shovel', 'block.snow.break'
+    )
+coatBlocks(
+    'minecraft:stone', 
+    'immersive_weathering:snowy_stone', 
+    snow, snow_sound, 'shovel', 'block.snow.break'
+)
+coatBlocks(
+    'minecraft:stone_bricks', 
+    'immersive_weathering:snowy_stone_bricks', 
+    snow, snow_sound, 'shovel', 'block.snow.break'
+)
+coatBlock(
+    'minecraft:chiseled_stone_bricks', 'immersive_weathering:snowy_chiseled_stone_bricks',
+     snow, snow_sound, 'shovel', 'block.snow.break'
+    )
+coatBlocks(
+    'immersive_weathering:snowy_cobblestone', 'dustydecorations:snowy_cobblestone',
+    snow, snow_sound, 'shovel', 'block.snow.break'
+)
+coatBlocks(
+    'immersive_weathering:snowy_stone_bricks', 'dustydecorations:snowy_stone_bricks',
+    snow, snow_sound, 'shovel', 'block.snow.break'
+)
 
+'rechiseled:prismarine_bricks_brick_pattern_slab_connecting'
 // Cracked blocks
 coatBlock(
     'minecraft:cracked_stone_bricks', 
@@ -189,5 +212,42 @@ coatBlock(
     'block.deepslate_tiles.break'
 )
 coatBlock(
-    
+    'minecraft:cracked_polished_blackstone_bricks', 
+    'minecraft:polished_blackstone_bricks', 
+    'immersive_weathering:blackstone_brick', 
+    'block.blackstone_bricks.place',
+    'pickaxe',
+    'block.blackstone_bricks.break'
 )
+coatBlock(
+    'minecraft:cracked_nether_bricks', 
+    'minecraft:nether_bricks', 
+    'minecraft:nether_brick', 
+    'block.nether_bricks.place',
+    'pickaxe',
+    'block.nether_bricks.break'
+)
+coatBlock(
+    'immersive_weathering:cracked_bricks',
+    'minecraft:bricks',
+    'minecraft:brick', 
+    'block.bricks.place',
+    'pickaxe',
+    'block.bricks.break'
+)
+coatBlocks(
+    'immersive_weathering:cracked_prismarine_bricks', 'minecraft:prismarine_bricks',
+    'immersive_weathering:prismarine_brick', 
+    'block.prismarine_bricks.place',
+    'pickaxe',
+    'block.prismarine_bricks.break'
+)
+coatBlock(
+    'stoneworks:cracked_prismarine_bricks', 
+    'stoneworks:prismarine_bricks',
+    'immersive_weathering:prismarine_brick', 
+    'block.prismarine_bricks.place',
+    'pickaxe',
+    'block.prismarine_bricks.break'
+)
+

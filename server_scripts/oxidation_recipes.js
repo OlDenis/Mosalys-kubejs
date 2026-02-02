@@ -71,7 +71,7 @@ ServerEvents.recipes(event => {
         iron_items.forEach((item) => {
             let ingredient = `${iron_oxydation_levels[index]}${item}`
             let result = `${iron_oxydation_levels[index + 1]}${item}`
-            fillingRecipe(event, ingredient, result,'spelunkers_palette', 'iron');
+            fillingRecipe(event, ingredient, result,'spelunkerspalette', 'iron');
         });
     }
 

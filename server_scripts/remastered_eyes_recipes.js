@@ -96,7 +96,7 @@ ServerEvents.recipes(event => {
             E: 'endermanoverhaul:bubble_pearl',
             F: 'minecraft:glow_ink_sac',
             G: 'minecraft:horn_coral',
-            H: 'tide:deep_aqua_crystal',
+            H: 'minecraft:prismarine_crystals',
             I: 'minecraft:tube_coral'
         }
     )

@@ -54,14 +54,16 @@ ServerEvents.recipes(event => {
     event.replaceInput(
         {input: 'create_ironworks:bronze_ingot'},
         'create_ironworks:bronze_ingot',
-        'alloyed:bronze_ingot')
-    event.remove({output: 'create_ironworks:bronze_ingot'})
-    event.remove({id: 'alloyed:mixing/bronze_ingot_x3'})
-    event.remove({id: 'alloyed:mixing/bronze_ingot'})
+        'alloyed:bronze_ingot'
+    )
+    event.remove({output: 'create_ironworks:bronze_ingot'});
+    event.remove({id: 'alloyed:mixing/bronze_ingot_x3'});
+    event.remove({id: 'alloyed:mixing/bronze_ingot'});
     event.replaceInput(
-        {input: 'create_ironworks:bronze_block'}
-        ,'create_ironworks:bronze_block'
-        ,'alloyed:bronze_block')
+        {input: 'create_ironworks:bronze_block'},
+        'create_ironworks:bronze_block',
+        'alloyed:bronze_block'
+    )
     event.remove({output: 'create_ironworks:bronze_block'})
     event.remove({output: 'create_ironworks:bronze_nugget'})
     event.remove({output: 'create_ironworks:bronze_sheet'})
@@ -73,7 +75,8 @@ ServerEvents.recipes(event => {
         ).id('kubejs:alloyed/bronze_ingot_from_ironworks')
 
     event.recipes.create.mixing(
-        ['3x alloyed:bronze_ingot',
+        [
+            Item.of('alloyed:bronze_ingot', 3),
             withChance('create_ironworks:tin_nugget', 0.5),
             withChance('create:copper_nugget', 0.5),
             withChance('create:experience_nugget', 0.75)
@@ -87,7 +90,8 @@ ServerEvents.recipes(event => {
     ).id('kubejs:mixing/bronze_ingot_x3')
     
     event.recipes.create.mixing(
-        ['alloyed:bronze_ingot',
+        [
+            'alloyed:bronze_ingot',
             withChance('create_ironworks:tin_nugget', 0.1667),
             withChance('create:copper_nugget', 0.1667),
             withChance('create:experience_nugget', 0.25)
@@ -101,7 +105,7 @@ ServerEvents.recipes(event => {
     ).id('kubejs:mixing/bronze_ingot')
     
     event.recipes.create.mixing(
-       ['3x alloyed:bronze_nugget']
+       Item.of('alloyed:bronze_nugget', 3),
         [
             'create:copper_nugget',
             'create:copper_nugget',

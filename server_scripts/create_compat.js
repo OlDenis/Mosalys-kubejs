@@ -207,6 +207,27 @@ function createRecipeWrapper(recipeJson) {
   return methods;
 }
 
+// Source - https://stackoverflow.com/a/61375162
+// Posted by Abbos Tajimov, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-02-01, License - CC BY-SA 4.0
+
+const snakeToCamel = str =>
+  str.toLowerCase().replace(/([-_][a-z])/g, group =>
+    group
+      .toUpperCase()
+      .replace('-', '')
+      .replace('_', '')
+  );
+
+// Source - https://stackoverflow.com/a/64489760
+// Posted by Scott Sauyet, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-02-01, License - CC BY-SA 4.0
+
+const snakeToPascal = (str) =>
+  str.replace(/^_*(.)|_+(.)/g, (s, c, d) => c ? c.toUpperCase() : d.toUpperCase())
+
+
+
 function addCreateRecipeHandler(event) {
   event.recipes.create = {};
   Object.keys(create).forEach((type) => {
@@ -215,11 +236,11 @@ function addCreateRecipeHandler(event) {
       let recipeJson = create[type].apply(null, args);
       return createRecipeWrapper(recipeJson, event);
     };
-    if (Utils.snakeCaseToCamelCase(type) != type)
-      event.recipes.create[Utils.snakeCaseToCamelCase(type)] =
+    if (snakeToCamel(type) != type)
+      event.recipes.create[snakeToCamel(type)] =
         event.recipes.create[type];
     event.recipes[
-      `create${Utils.snakeCaseToTitleCase(type)}`.replace(" ", "")
+      `create${snakeToPascal(type)}`
     ] = event.recipes.create[type];
   });
 

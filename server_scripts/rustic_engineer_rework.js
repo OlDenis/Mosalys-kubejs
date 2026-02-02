@@ -39,7 +39,7 @@ ServerEvents.recipes(event => {
        [
            event.recipes.createDeploying('create:precision_mechanism', ['create:precision_mechanism', 'create:cogwheel']),
            event.recipes.createDeploying('create:precision_mechanism', ['create:precision_mechanism', 'create:large_cogwheel']),
-           event.recipes.createDeploying('create:precision_mechanism', ['create:gold_sheet', 'rustic_engineer:gear']),
+           event.recipes.createDeploying('create:precision_mechanism', ['create:precision_mechanism', 'rustic_engineer:gear']),
         
        ]
     ).transitionalItem('create:precision_mechanism')

@@ -1,6 +1,8 @@
 // priority: 2
 // requires: woodworks
 
+// Note: À peu près toutes les erreurs reliées à ce script viennent de pastel et luminousworld qui ont des conventions de nommage bizarres. 
+
 // Data
 const wood_types = {
     "minecraft": [
@@ -14,7 +16,8 @@ const wood_types = {
         "cherry",
         "bamboo",
         "crimson",
-        "warped"
+        "warped", 
+        "pale_oak"
     ],
     // "abyssal_decor": [  // No tags
     //     // "ancient_birch",
@@ -140,9 +143,6 @@ const wood_types = {
         "smogstem",
         "grongle",
         "wigglewood"
-    ],
-    "vanillabackport": [
-        "pale_oak"
     ],
     "wetland_whimsy": [
         "bald_cypress"
@@ -629,15 +629,16 @@ function sawmillRecipe(ingredient, result_id, result_amount, is_logs){
             }
         }
     }
-    
-    return r
-    
+    return r;   
 }
 
 // Functions adding sawmill recipes
 function modItemSawmillRecipe(event, mod_items, wood_type, namespace){
     // Register sawmill recipe of modded items made of vanilla wood
     for (const [ingredient_part, mod_results] of Object.entries(mod_items)) {
+        if (wood_type === "pale_oak"){
+            continue; // No modded blocks for pale oak
+        }
         if (ingredient_part === "logs") {
             if (stem_wood.includes(wood_type)) {
                 ingredient_part = "stem";
@@ -663,9 +664,11 @@ function modItemSawmillRecipe(event, mod_items, wood_type, namespace){
                     if (wood_type === "dark_oak") {
                         result_id = mod + ":darkoak" + result["id"];
                     }
-                    // Patch luminousworld shelves IDs
-                    if (result["id"] === "shelf" && luminousshelf.includes(wood_type)) {
-                        result_id += "_1";
+                    else if (wood_type === "bamboo" && result["id"] === "log_stack") {
+                        continue; // No log_stack for bamboo
+                    }
+                    else if(wood_type === "cherry"){
+                        continue; // No luminousworld items for cherry wood
                     }
                 }
                 else if (mod === "unusual_furniture" && result["id"] === "carved") {
@@ -691,7 +694,6 @@ function modItemSawmillRecipe(event, mod_items, wood_type, namespace){
                         ingredient
                     ).id(r_id + "_cutting")
                 }
-
             }
         }
         // Remove stonecutting recipe (Decorative paths and pavers)
@@ -715,7 +717,7 @@ function vanillaItemSawmillRecipe(event, vanilla_items, wood_type, namespace){
         }
         let ingredient = namespace + ":" + wood_type + "_" + ingredient_part;
         // Special tags for aether and ars_nouveau and other exceptions
-        if (Object.keys(special_log_tags).includes(namespace) && Object.keys(special_log_tags[namespace]).includes(wood_type)){
+        if (Object.keys(special_log_tags).includes(namespace) && Object.keys(special_log_tags[namespace]).includes(wood_type) && ingredient_part === "logs"){
             ingredient = namespace + ":" + special_log_tags[namespace][wood_type];
         }
         else if (namespace === "ars_nouveau" && wood_type === "archwood" && ingredient_part === "logs"){
@@ -733,7 +735,7 @@ function vanillaItemSawmillRecipe(event, vanilla_items, wood_type, namespace){
                         }
                         else if ( result["id"] === "fence_gate"){
                             result_id = namespace + ":white_oakfencegate";
-                        }                        
+                        }                      
                     }
                     else if (wood_type === "baobab"){
                         ingredient = ingredient.replace("planks", "plank");
@@ -772,9 +774,22 @@ function vanillaItemSawmillRecipe(event, vanilla_items, wood_type, namespace){
                         result_id = result_id.replace("slab", "slabs");
                     }
                 }
-                if (result["id"] === "boat"){
+                else if (namespace === "pastel" && ["sign", "door", "trapdoor", "boat"].includes(result["id"])){
+                    continue; // No sign item for pastel colored woods
+                }
+                else if (wood_type === "alpha" && !["planks", "stairs", "slab"].includes(result["id"])){
+                    continue; // Only planks, stairs and slab exist for alpha wood
+                }
+                else if (result["id"] == "boat"){
                     if (wood_type === "bamboo") {result_id = result_id.replace("boat", "raft");}
-                    else if (["crimson", "warped"].includes(wood_type)) continue;
+                    else if ([
+                        "crimson", 
+                        "warped", 
+                        "blue_bioshroom", 
+                        "green_bioshroom",
+                        "pink_bioshroom",
+                        "yellow_bioshroom"
+                    ].includes(wood_type)) continue;
                 }
                 
                 // Create sawmill recipe
@@ -789,11 +804,15 @@ function vanillaItemSawmillRecipe(event, vanilla_items, wood_type, namespace){
 function modItemFromModdedWoodSawmillRecipe(event, mod_items, wood_type, namespace){
     // Register sawmill recipe of modded items made of modded wood
     for (const [ingredient_part, mod_results] of Object.entries(mod_items)){
-        let ingredient = `${namespace}:${wood_type}_${ingredient_part}`;
         let is_logs = log_variants.includes(ingredient_part)
+        if (wood_type === "magnolia" && ingredient_part === "logs"){
+            ingredient_part = special_log_tags["regions_unexplored"]["magnolia"];
+            is_logs= true;
+        }
+        let ingredient = `${namespace}:${wood_type}_${ingredient_part}`;
         
         // Supplementaries recipe (way_signs)
-        if (Object.keys(mod_results).includes("supplementaries")){
+        if (Object.keys(mod_results).includes("supplementaries") && namespace !== "luminousworld"){
             for (let result of mod_results["supplementaries"]){
                 let result_id = `supplementaries:${namespace}/${result["id"]}_${wood_type}`;
                 let r = sawmillRecipe(ingredient, result_id, result["amount"], is_logs);
@@ -871,18 +890,7 @@ ServerEvents.tags("item", event => {
 
 
 ServerEvents.recipes(event => {
-    // Add vanilla chest recipe for 
-    // event.shaped(
-    //     'minecraft:chest',
-    //     [
-    //         'AAA',
-    //         'A A',
-    //         'AAA'
-    //     ],
-    //     {
-    //         'A': '#kubejs:mod_planks'
-    //     }
-    // )
+    // Add vanilla chest recipe for modded planks
     event.shaped(
         'minecraft:bookshelf',
         [
@@ -989,8 +997,8 @@ ServerEvents.recipes(event => {
     ).id('barbequesdelight:basin_from_logs_cutting')
 
     // Foxy pillar
-    const foxy_r = sawmillRecipe("minecraft:spruce_logs", "abyssal_decor:foxy_pillar", 1, true)
-    event.custom(foxy_r);
+    // const foxy_r = sawmillRecipe("minecraft:spruce_logs", "abyssal_decor:foxy_pillar", 1, true)
+    // event.custom(foxy_r);
     // Wood plate
     const w_plate_r = sawmillRecipe("minecraft:wooden_slabs", "handcrafted:wood_plate", 1, true)
     event.custom(w_plate_r);

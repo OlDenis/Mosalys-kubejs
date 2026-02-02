@@ -183,7 +183,7 @@ ServerEvents.recipes(event => {
         'expandeddelight:crushing_mallet',
         [
             Item.of(salt, 2),
-            withChance(salt, 0.15)
+            ChanceResult.of(salt, 0.15)
         ]
     )
     event.remove({id: "expandeddelight:cutting/salt_rock"})
