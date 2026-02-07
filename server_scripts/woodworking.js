@@ -92,11 +92,10 @@ ServerEvents.recipes(event => {
     const fence = blockFactory('fence', 4, 1);
     const fence_gate = blockFactory('fence_gate', 4, 0);
     const door = blockFactory('door', 2, 0);
-    const trapdoor = blockFactory('trapdoor', 3, 0);
+    const trapdoor = blockFactory('trapdoor', 2, 0);
     const pressure_plate = blockFactory('pressure_plate', 2, 0);
     const button = blockFactory('button', 4, 1);
-    const sign = blockFactory('sign', 3, 0);
-    const boat = blockFactory('boat', 1, 0);
+    const sign = blockFactory('sign', 2, 0);
 
     // Mod blocks
     function way_sign(mod, wood_type, logs) {
@@ -242,6 +241,28 @@ ServerEvents.recipes(event => {
     commonWoodRecipes('garnished:nut');
     commonWoodRecipes('garnished:sepia');    
 
+    // Luminous Nether
+    //Mushroom
+    planks('luminous_nether:mushroom_logs', 'luminous_nether:mushroom_planks');
+    stairs('luminous_nether:mushroom_logs', 'luminous_nether:mushroom_planks');
+    slab('luminous_nether:mushroom_logs', 'luminous_nether:mushroom_planks', 'luminous_nether:mushroom_slabs');
+    fence('luminous_nether:mushroom_logs', 'luminous_nether:mushroom_planks', 'luminous_nether:mushroom_fence');
+    fence_gate('luminous_nether:mushroom_logs', 'luminous_nether:mushroom_planks', 'luminous_nether:mushoom_fence_gate');
+    door('luminous_nether:mushroom_logs', 'luminous_nether:mushroom_planks');
+    trapdoor('luminous_nether:mushroom_logs', 'luminous_nether:mushroom_planks', 'luminous_nether:mushroom_trap_door');
+    pressure_plate('luminous_nether:mushroom_logs', 'luminous_nether:mushroom_planks');
+    button('luminous_nether:mushroom_logs', 'luminous_nether:mushroom_planks');
+    // Withered
+    planks('luminous_nether:withered_logs', 'luminous_nether:withered_planks');
+    stairs('luminous_nether:withered_logs', 'luminous_nether:withered_planks');
+    slab('luminous_nether:withered_logs', 'luminous_nether:withered_planks');
+    fence('luminous_nether:withered_logs', 'luminous_nether:withered_planks', 'luminous_nether:withered_fence');
+    fence_gate('luminous_nether:withered_logs', 'luminous_nether:withered_planks', 'luminous_nether:withered_fence_gate');
+    door('luminous_nether:withered_logs', 'luminous_nether:withered_planks');
+    trapdoor('luminous_nether:withered_logs', 'luminous_nether:withered_planks', 'luminous_nether:withered_trap_door');
+    pressure_plate('luminous_nether:withered_logs', 'luminous_nether:withered_planks');
+    button('luminous_nether:withered_logs', 'luminous_nether:withered_planks');
+
     // Luminous World
     // Baobab
     planks('luminousworld:baobab_logs', 'luminousworld:baobab_plank');
@@ -288,6 +309,22 @@ ServerEvents.recipes(event => {
     // More Sniffer Flowers
     commonWoodRecipes('moresnifferflowers:vivicus');
     commonWoodRecipes('moresnifferflowers:corrupted');
+
+    // My Nether's Delight
+    
+    registerSawmillRecipes('mynethersdelight:block_of_powdery', 'mynethersdelight:powdery_planks', 3, false);
+    stairs('mynethersdelight:block_of_powdery', 'mynethersdelight:powdery_planks');
+    slab('mynethersdelight:block_of_powdery', 'mynethersdelight:powdery_planks');
+    fence('mynethersdelight:block_of_powdery', 'mynethersdelight:powdery_planks', 'mynethersdelight:powdery_fence');
+    fence_gate('mynethersdelight:block_of_powdery', 'mynethersdelight:powdery_planks', 'mynethersdelight:powdery_fence_gate');
+    door('mynethersdelight:block_of_powdery', 'mynethersdelight:powdery_planks');
+    trapdoor('mynethersdelight:block_of_powdery', 'mynethersdelight:powdery_planks', 'mynethersdelight:powdery_trapdoor');
+    pressure_plate('mynethersdelight:block_of_powdery', 'mynethersdelight:powdery_planks');
+    button('mynethersdelight:block_of_powdery', 'mynethersdelight:powdery_planks');
+    registerSawingRecipes('mynethersdelight:powdery_planks', 'mynethersdelight:powdery_mosaic', 1, false);
+    registerSawingRecipes('mynethersdelight:powdery_mosaic','mynethersdelight:powdery_mosaic_stairs', 1, false);
+    registerSawingRecipes('mynethersdelight:powdery_mosaic','mynethersdelight:powdery_mosaic_slab', 2, false);
+    
 
     // Pastel
     function colorPastelRecipes(color) {
@@ -358,9 +395,6 @@ ServerEvents.recipes(event => {
     ]) {
         commonWoodRecipes(`twilightforest:${wood_type}`);
     }
-    // Upgrade Aquatic
-    commonWoodRecipes('upgrade_aquatic:driftwood');
-    commonWoodRecipes('upgrade_aquatic:river');
     // Regions unexplored
     planks('regions_unexplored:alpha');
     stairs('regions_unexplored:alpha');
@@ -401,6 +435,10 @@ ServerEvents.recipes(event => {
     ]) {
         commonWoodRecipes(`undergarden:${wood_type}`);
     }
+    // Upgrade Aquatic
+    commonWoodRecipes('upgrade_aquatic:driftwood');
+    commonWoodRecipes('upgrade_aquatic:river');
+
 
     // Wetland Whimsy
     commonWoodRecipes('wetland_whimsy:bald_cypress');
