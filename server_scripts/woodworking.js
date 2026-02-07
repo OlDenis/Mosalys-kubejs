@@ -157,29 +157,16 @@ ServerEvents.recipes(event => {
     way_sign('aether', 'skyroot');
 
     // Ars Nouveau
-    registerSawmillRecipes('c:logs/archwood', 'ars_nouveau:archwood_planks', 4, true);
-
-    registerSawmillRecipes('c:logs/archwood', 'ars_nouveau:archwood_stairs', 4, true);
-    registerSawmillRecipes('ars_nouveau:archwood_planks', 'ars_nouveau:archwood_stairs', 1, false);
-
-    registerSawmillRecipes('c:logs/archwood', 'ars_nouveau:archwood_slab', 8, true);
-    registerSawmillRecipes('ars_nouveau:archwood_planks', 'ars_nouveau:archwood_slab', 2, false);
-
-    registerSawmillRecipes('c:logs/archwood', 'ars_nouveau:archwood_fence', 4, true);
-    registerSawmillRecipes('ars_nouveau:archwood_planks', 'ars_nouveau:archwood_fence', 1, false);
-
-    registerSawmillRecipes('c:logs/archwood', 'ars_nouveau:archwood_fence_gate', 1, true);
-
-    registerSawmillRecipes('c:logs/archwood', 'ars_nouveau:archwood_door', 2, true);
-
-    registerSawmillRecipes('c:logs/archwood', 'ars_nouveau:archwood_trapdoor', 3, true);
-
-    registerSawmillRecipes('c:logs/archwood', 'ars_nouveau:archwood_pressure_plate', 2, true);
-
-    registerSawmillRecipes('c:logs/archwood', 'ars_nouveau:archwood_button', 4, true);
-    registerSawmillRecipes('ars_nouveau:archwood_planks', 'ars_nouveau:archwood_button', 1, false);
-
-    registerSawingRecipes('c:logs/archwood', 'ars_nouveau:archwood_sign', 1, true);
+    planks('c:logs/archwood', 'ars_nouveau:archwood_planks');
+    stairs('c:logs/archwood', 'ars_nouveau:archwood_planks');
+    slab('c:logs/archwood', 'ars_nouveau:archwood_planks');
+    fence('c:logs/archwood', 'ars_nouveau:archwood_planks');
+    fence_gate('c:logs/archwood', 'ars_nouveau:archwood_planks');
+    door('c:logs/archwood', 'ars_nouveau:archwood_planks');
+    trapdoor('c:logs/archwood', 'ars_nouveau:archwood_planks');
+    pressure_plate('c:logs/archwood', 'ars_nouveau:archwood_planks');
+    button('c:logs/archwood', 'ars_nouveau:archwood_planks');
+    sign('c:logs/archwood', 'ars_nouveau:archwood_planks');
     registerSawingRecipes('c:logs/archwood', 'supplementaries:ars_nouveau/way_sign_archwood', 2, true);
 
     // Better Archeology
@@ -237,6 +224,7 @@ ServerEvents.recipes(event => {
 
     // Eternal Starlight
     for (let wood_type of [
+        "cradlewood",
         "lunar",
         "northland",
         "starlight_mangrove",
@@ -257,6 +245,28 @@ ServerEvents.recipes(event => {
     // More Sniffer Flowers
     commonWoodRecipes('moresnifferflowers:vivicus');
     commonWoodRecipes('moresnifferflowers:corrupted');
+
+    // Pastel
+    for (let nox_wood_type of [
+        'chestnut',
+        'ebony',
+        'ivory',
+        'slate'
+    ]) {
+        let nox_stem = `pastel:${nox_wood_type}_noxcap_stems`;
+        let nox_planks = `pastel:${nox_wood_type}_noxwood_planks`;
+
+        planks(nox_stem, nox_planks);
+        stairs(nox_stem, nox_planks);
+        slab(nox_stem, nox_planks);
+        fence(nox_stem, nox_planks);
+        fence_gate(nox_stem, nox_planks);
+        door(nox_stem, nox_planks);
+        trapdoor(nox_stem, nox_planks);
+        pressure_plate(nox_stem, nox_planks);
+        button(nox_stem, nox_planks);
+    }
+
 
     // Twilight Forest
     for (let wood_type of [
