@@ -242,11 +242,96 @@ ServerEvents.recipes(event => {
     commonWoodRecipes('garnished:nut');
     commonWoodRecipes('garnished:sepia');    
 
+    // Luminous World
+    // Baobab
+    planks('luminousworld:baobab_logs', 'luminousworld:baobab_plank');
+    stairs('luminousworld:baobab_logs', 'luminousworld:baobab_plank');
+    slab('luminousworld:baobab_logs', 'luminousworld:baobab_plank');
+    fence('luminousworld:baobab_logs', 'luminousworld:baobab_plank', 'luminousworld:baobabfence');
+    fence_gate('luminousworld:baobab_logs', 'luminousworld:baobab_plank');
+    door('luminousworld:baobab_logs', 'luminousworld:baobab_plank');
+    trapdoor('luminousworld:baobab_logs', 'luminousworld:baobab_plank', 'luminousworld:baobabtrapdoor');
+    pressure_plate('luminousworld:baobab_logs', 'luminousworld:baobab_plank');
+    button('luminousworld:baobab_logs', 'luminousworld:baobab_plank');
+    // Palm 
+    planks('luminousworld:palm_logs', 'luminousworld:palmplank');
+    stairs('luminousworld:palm_logs', 'luminousworld:palmplank', 'luminousworld:palmstairs');
+    slab('luminousworld:palm_logs', 'luminousworld:palmplank', 'luminousworld:palmslab');
+    fence('luminousworld:palm_logs', 'luminousworld:palmplank', 'luminousworld:palmfence');
+    fence_gate('luminousworld:palm_logs', 'luminousworld:palmplank', 'luminousworld:palm_fencegate');
+    door('luminousworld:palm_logs', 'luminousworld:palmplank');
+    trapdoor('luminousworld:palm_logs', 'luminousworld:palmplank', 'luminousworld:palmtrapdoor');
+    pressure_plate('luminousworld:palm_logs', 'luminousworld:palmplank');
+    button('luminousworld:palm_logs', 'luminousworld:palmplank');
+    // White Oak
+    planks('luminousworld:white_oak_logs', 'luminousworld:white_oak_plank');
+    stairs('luminousworld:white_oak_logs', 'luminousworld:white_oak_plank');
+    slab('luminousworld:white_oak_logs', 'luminousworld:white_oak_plank');
+    fence('luminousworld:white_oak_logs', 'luminousworld:white_oak_plank');
+    fence_gate('luminousworld:white_oak_logs', 'luminousworld:white_oak_plank', 'luminousworld:white_oakfencegate');
+    button('luminousworld:white_oak_logs', 'luminousworld:white_oak_plank');
+    pressure_plate('luminousworld:white_oak_logs', 'luminousworld:white_oak_plank');
+    door('luminousworld:white_oak_logs', 'luminousworld:white_oak_plank');
+    trapdoor('luminousworld:white_oak_logs', 'luminousworld:white_oak_plank', 'luminousworld:whiteoaktrapdoor');
+    // Auburn
+    planks('luminousworld:auburn_logs', 'luminousworld:autumnplank');
+    stairs('luminousworld:auburn_logs', 'luminousworld:autumnplank', 'luminousworld:autumnstairs');
+    slab('luminousworld:auburn_logs', 'luminousworld:autumnplank', 'luminousworld:autumnslab');
+    fence('luminousworld:auburn_logs', 'luminousworld:autumnplank', 'luminousworld:autumnfence');
+    fence_gate('luminousworld:auburn_logs', 'luminousworld:autumnplank', 'luminousworld:autumnfencegate');
+    door('luminousworld:auburn_logs', 'luminousworld:autumnplank');
+    trapdoor('luminousworld:auburn_logs', 'luminousworld:autumnplank', 'luminousworld:auburntrapdoor');
+    pressure_plate('luminousworld:auburn_logs', 'luminousworld:autumnplank');
+    button('luminousworld:auburn_logs', 'luminousworld:autumnplank');
+
+
     // More Sniffer Flowers
     commonWoodRecipes('moresnifferflowers:vivicus');
     commonWoodRecipes('moresnifferflowers:corrupted');
 
     // Pastel
+    function colorPastelRecipes(color) {
+        planks(`pastel:${color}`);
+        stairs(`pastel:${color}`);
+        slab(`pastel:${color}`);
+        fence(`pastel:${color}`);
+        fence_gate(`pastel:${color}`);
+        button(`pastel:${color}`);
+        pressure_plate(`pastel:${color}`);
+    }
+    for (let color of [
+        'white',
+        'orange',
+        'magenta',
+        'light_blue',
+        'yellow',
+        'lime',
+        'pink',
+        'gray',
+        'light_gray',
+        'cyan',
+        'purple',
+        'blue',
+        'brown',
+        'green',
+        'red',
+        'black'
+    ]) {
+        colorPastelRecipes(color);
+    }
+    
+    function commonPastelRecipes(p_logs, p_planks) {
+        planks(p_logs, p_planks);
+        stairs(p_logs, p_planks);
+        slab(p_logs, p_planks);
+        fence(p_logs, p_planks);
+        fence_gate(p_logs, p_planks);
+        door(p_logs, p_planks);
+        trapdoor(p_logs, p_planks);
+        pressure_plate(p_logs, p_planks);
+        button(p_logs, p_planks);
+    }
+
     for (let nox_wood_type of [
         'chestnut',
         'ebony',
@@ -255,17 +340,9 @@ ServerEvents.recipes(event => {
     ]) {
         let nox_stem = `pastel:${nox_wood_type}_noxcap_stems`;
         let nox_planks = `pastel:${nox_wood_type}_noxwood_planks`;
-
-        planks(nox_stem, nox_planks);
-        stairs(nox_stem, nox_planks);
-        slab(nox_stem, nox_planks);
-        fence(nox_stem, nox_planks);
-        fence_gate(nox_stem, nox_planks);
-        door(nox_stem, nox_planks);
-        trapdoor(nox_stem, nox_planks);
-        pressure_plate(nox_stem, nox_planks);
-        button(nox_stem, nox_planks);
+        commonPastelRecipes(nox_stem, nox_planks);        
     }
+    commonPastelRecipes('pastel:weeping_gala_logs', 'pastel:weeping_gala_planks');
 
 
     // Twilight Forest
@@ -346,4 +423,33 @@ ServerEvents.recipes(event => {
     ]) {
         commonWoodRecipes(`would:${wood_type}`);
     }
+});
+
+ServerEvents.tags('item', event => {
+    // Luminous nether logs
+    event.add("luminous_nether:withered_logs", "luminous_nether:withered_log")
+    event.add("luminous_nether:withered_logs", "luminous_nether:stripped_withered_log")
+    event.add("luminous_nether:mushroom_logs", "luminous_nether:goldenstem")
+    event.add("luminous_nether:mushroom_logs", "luminous_nether:shredded_stem")
+
+    // Luminousworld logs
+    event.add("luminousworld:baobab_logs", "luminousworld:bao_bob_log")
+    event.add("luminousworld:baobab_logs", "luminousworld:stripped_baobab_log")
+    event.add("luminousworld:baobab_logs", "luminousworld:bao_bob_wood")
+    event.add("luminousworld:baobab_logs", "luminousworld:stripped_baobab_wood")
+
+    event.add("luminousworld:white_oak_logs", "luminousworld:whiteoaklog")
+    event.add("luminousworld:white_oak_logs", "luminousworld:stripped_white_oak_log")
+    event.add("luminousworld:white_oak_logs", "luminousworld:white_oak_wood")
+    event.add("luminousworld:white_oak_logs", "luminousworld:stripped_white_oak_wood")
+
+    event.add("luminousworld:palm_logs", "luminousworld:palm_log")
+    event.add("luminousworld:palm_logs", "luminousworld:stripped_palm_log")
+    event.add("luminousworld:palm_logs", "luminousworld:palm_wood")
+    event.add("luminousworld:palm_logs", "luminousworld:stripped_palm_wood")
+
+    event.add("luminousworld:auburn_logs", "luminousworld:auburnlog")
+    event.add("luminousworld:auburn_logs", "luminousworld:stripped_auburn_log")
+    event.add("luminousworld:auburn_logs", "luminousworld:auburn_wood")
+    event.add("luminousworld:auburn_logs", "luminousworld:stripped_auburn_wood")
 });
