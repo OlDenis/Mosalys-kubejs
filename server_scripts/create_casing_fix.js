@@ -29,7 +29,7 @@ const mod_woods = {
         "vivicus",
         "corrupted"
     ],
-    "vanillabackport": [
+    "minecraft": [
         "pale_oak"
     ],
     "wetland_whimsy": [
@@ -66,7 +66,6 @@ function createCasingFix(event) {
 // Create casing fix for blocks and items
 ServerEvents.tags("block", event => {
     createCasingFix(event);
-    
 })
 ServerEvents.tags("item", event => {
     createCasingFix(event);
