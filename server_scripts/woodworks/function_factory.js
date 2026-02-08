@@ -116,17 +116,27 @@ function modBlockFactory(mod, name, n_l, n_p) {
     }
 };
 
-function way_sign(event, mod, wood_type, logs) {
+function way_sign(event, mod, wood_type, logs, no_sign) {
     if (logs === undefined) {
         logs = 'logs';
     }
     registerSawingRecipes(event,`${mod}:${wood_type}_${logs}`, `supplementaries:${mod}/way_sign_${wood_type}`, 4, true);
     registerSawingRecipes(event,`${mod}:${wood_type}_planks`, `supplementaries:${mod}/way_sign_${wood_type}`, 1, false);
+    if (no_sign === undefined || no_sign === false) {
+        registerSawingRecipes(event,`${mod}:${wood_type}_sign`, `supplementaries:${mod}/way_sign_${wood_type}`, 2, false);
+    }
+
 }
 
-function way_sign_from_vanilla(event, wood_type) {
-    registerSawingRecipes(event,`minecraft:${wood_type}_logs`, `supplementaries:way_sign_${wood_type}`, 4, true);
+function way_sign_from_vanilla(event, wood_type, logs, no_sign) {
+    if (logs === undefined) {
+        logs = 'logs';
+    }
+    registerSawingRecipes(event,`minecraft:${wood_type}_${logs}`, `supplementaries:way_sign_${wood_type}`, 4, true);
     registerSawingRecipes(event,`minecraft:${wood_type}_planks`, `supplementaries:way_sign_${wood_type}`, 1, false);
+    if (no_sign === undefined || no_sign === false) {
+        registerSawingRecipes(event,`minecraft:${wood_type}_sign`, `supplementaries:way_sign_${wood_type}`, 2, false);
+    }
 }
 
 

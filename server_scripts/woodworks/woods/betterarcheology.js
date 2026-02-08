@@ -11,5 +11,5 @@ ServerEvents.recipes(event =>{
     ]) {
         f(event, 'betterarcheology:rotten');
     }
-    way_sign(event, 'betterarcheology', 'rotten');
+    way_sign(event, 'betterarcheology', 'rotten', 'logs', true);
 });

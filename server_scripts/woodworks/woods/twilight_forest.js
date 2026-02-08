@@ -11,5 +11,6 @@ ServerEvents.recipes(event =>{
         "sorting"
     ]) {
         commonWoodRecipes(event, `twilightforest:${wood_type}`);
+        banister(event, `twilightforest:${wood_type}_logs`, `twilightforest:${wood_type}_planks`);
     }
 });
