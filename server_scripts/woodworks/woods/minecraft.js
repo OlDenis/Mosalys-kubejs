@@ -27,8 +27,11 @@ ServerEvents.recipes(event => {
         "cherry"
     ]) {
         vanillaWoodRecipes(event, wood_type);
+        lattice(event, `${wood_type}_logs`, `${wood_type}_planks`);
+
     }
     vanillaWoodRecipes(event, 'crimson', 'stems');
     vanillaWoodRecipes(event, 'warped', 'stems');
     vanillaWoodRecipes(event, 'bamboo', 'blocks');
+    lattice(event, 'bamboo_blocks', 'bamboo_planks');
 });

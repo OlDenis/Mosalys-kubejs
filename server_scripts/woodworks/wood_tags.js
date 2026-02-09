@@ -25,4 +25,10 @@ ServerEvents.tags('item', event => {
     event.add("luminousworld:auburn_logs", "luminousworld:stripped_auburn_log")
     event.add("luminousworld:auburn_logs", "luminousworld:auburn_wood")
     event.add("luminousworld:auburn_logs", "luminousworld:stripped_auburn_wood")
+
+    // Vinery logs
+    event.add("vinery:dark_cherry_logs", "vinery:dark_cherry_log")
+    event.add("vinery:dark_cherry_logs", "vinery:stripped_dark_cherry_log")
+    event.add("vinery:dark_cherry_logs", "vinery:dark_cherry_wood")
+    event.add("vinery:dark_cherry_logs", "vinery:stripped_dark_cherry_wood")
 });
