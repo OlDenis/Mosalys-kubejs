@@ -1,4 +1,5 @@
 // requires: would
+// ignores: true
 
 // Add Would sapplings to the Sniffer's loot table
 
