@@ -1,5 +1,4 @@
 ServerEvents.recipes(event =>{
-
     // Aether
     commonWoodRecipes(event, 'aether:skyroot');
     way_sign(event, 'aether', 'skyroot');

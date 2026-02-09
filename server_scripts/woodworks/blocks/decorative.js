@@ -14,11 +14,15 @@ function decorativeRecipes(event, wood_type, logs) {
         logs = 'logs';
     }
     for ( let n = 1; n <= 6; n++) {
-        let path = modBlockFactory('decorativepaths', `planks_path_${pad(n, 2)}`, 4, 1);
+        let path_name = `planks_path_${pad(n, 2)}`;
+        event.remove({id: `decorativespaths:${wood_type}_${path_name}`})
+        let path = modBlockFactory('decorativepaths', path_name, 4, 1);
         path(event, `${wood_type}_${logs}`, `${wood_type}_planks`);
     }
     for ( let n = 1; n <= 10; n++) {
-        let paver = modBlockFactory('decorativepavers', `paver_${pad(n, 2)}`, 4, 1);
+        let paver_name = `paver_${pad(n, 2)}`
+        event.remove({id: `decorativepavers:${wood_type}_${paver_name}`})
+        let paver = modBlockFactory('decorativepavers', paver_name , 4, 1);
         paver(event, `${wood_type}_${logs}`, `${wood_type}_planks`);
     }
 }

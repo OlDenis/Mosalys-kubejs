@@ -31,4 +31,10 @@ ServerEvents.tags('item', event => {
     event.add("vinery:dark_cherry_logs", "vinery:stripped_dark_cherry_log")
     event.add("vinery:dark_cherry_logs", "vinery:dark_cherry_wood")
     event.add("vinery:dark_cherry_logs", "vinery:stripped_dark_cherry_wood")
+
+    // Cataclysm
+    event.add("cataclysm:chorus_stems", "cataclysm:chorus_stem")
+
+    // Garnished additions
+    event.add("garnished_additions:ethereal_logs", "#minecraft:ethereal_logs")
 });

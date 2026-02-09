@@ -3,7 +3,6 @@ ServerEvents.recipes(event => {
         if (logs === undefined) {
             logs = 'logs';
         }
-        commonWoodRecipes(event, wood_type);
         decorativeRecipes(event, wood_type, logs);
         handcraftedWoodRecipes(event, wood_type, logs);
         unusualWoodRecipes(event, wood_type, logs);

@@ -61,15 +61,17 @@ function registerSawingRecipes(event, ingredient, result_id, result_amount, is_l
 }
 
 // Factory function for creating block recipe functions
-function blockFactory(name, n_l, n_p) {
+function blockFactory(name, n_l, n_p, sawmill_only) {
     // n_l: number from logs, n_p: number from planks
     return (event, arg1, arg2, arg3) => {
         // Default block factory when only wood type is provided
+        let registerFunc = registerSawingRecipes;
+        if (sawmill_only){registerFunc = registerSawmillRecipes;}
         if (arg1 !== undefined && arg2 === undefined) {
             let wood_type = arg1;
-            registerSawingRecipes(event, `${wood_type}_logs`, `${wood_type}_${name}`, n_l, true);
+            registerFunc(event, `${wood_type}_logs`, `${wood_type}_${name}`, n_l, true);
             if (n_p > 0) {
-                registerSawingRecipes(event,`${wood_type}_planks`, `${wood_type}_${name}`, n_p, false);
+                registerFunc(event,`${wood_type}_planks`, `${wood_type}_${name}`, n_p, false);
             }
         }
         // General block factory when specific input and output are provided
@@ -78,16 +80,16 @@ function blockFactory(name, n_l, n_p) {
             let input_planks = arg2;
             let output = arg3;
             if (output === undefined) { output = input_planks.replace('_planks', '_' + name); }
-            registerSawingRecipes(event, input_logs, output, n_l, true);
+            registerFunc(event, input_logs, output, n_l, true);
             if (n_p > 0) {
-                registerSawingRecipes(event, input_planks, output, n_p, false);
+                registerFunc(event, input_planks, output, n_p, false);
             }
         }
     }
 }
 
 // Vanilla items
-const planks = blockFactory('planks', 4, 0);
+const planks = blockFactory('planks', 4, 0, true);
 const stairs = blockFactory('stairs', 4, 1);
 const slab = blockFactory('slab', 8, 2);
 const fence = blockFactory('fence', 4, 1);
@@ -142,7 +144,7 @@ function way_sign_from_vanilla(event, wood_type, logs, no_sign) {
 
 
 // Common recipes for all wood types
-function commonWoodRecipes(event, wood_type, logs) {
+function commonWoodRecipes(event, wood_type, logs, no_sign) {
     for ( let f of [
         planks,
         stairs,
@@ -155,6 +157,11 @@ function commonWoodRecipes(event, wood_type, logs) {
         button,
         sign
     ]){
+        // Skip sign recipe
+        if (no_sign === true && f === sign) {
+            continue;
+        }
+        // If logs argument is not provided, use default log tag. Otherwise, use provided log tag.
         if (logs === undefined) { 
             f(event, wood_type);
         }
