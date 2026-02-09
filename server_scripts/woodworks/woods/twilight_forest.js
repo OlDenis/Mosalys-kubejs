@@ -12,6 +12,7 @@ ServerEvents.recipes(event =>{
     ]) {
         commonWoodRecipes(event, `twilightforest:${wood_type}`);
         banister(event, `twilightforest:${wood_type}_logs`, `twilightforest:${wood_type}_planks`);
+        hollowed_log(event, 'twilightforest', wood_type)
     }
 
     event.remove({ id: "twilightforest:stonecutting/dark_log/encased_towerwood"})

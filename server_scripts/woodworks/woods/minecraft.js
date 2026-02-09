@@ -27,10 +27,15 @@ ServerEvents.recipes(event => {
     ]) {
         vanillaWoodRecipes(event, wood_type);
         lattice(event, `${wood_type}_logs`, `${wood_type}_planks`);
-
+        hollowed_log(event, 'minecraft', wood_type)
+        
     }
     vanillaWoodRecipes(event, 'crimson', 'stems');
+    hollowed_log(event, 'minecraft', 'crimson', 'stem')
+
     vanillaWoodRecipes(event, 'warped', 'stems');
+    hollowed_log(event, 'minecraft', 'warped', 'stem')
+
     vanillaWoodRecipes(event, 'bamboo', 'blocks');
     lattice(event, 'bamboo_blocks', 'bamboo_planks');
 });
