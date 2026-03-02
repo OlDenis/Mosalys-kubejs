@@ -1,0 +1,7 @@
+{
+    "fluids": [
+        "createdieselgenerators:gasoline",
+        "minecraft:lava"
+    ],
+    "fuel_ticks": 1
+}
