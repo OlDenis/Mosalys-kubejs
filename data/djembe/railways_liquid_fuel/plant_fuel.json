@@ -1,0 +1,10 @@
+{
+    "fluids": [
+        "createdieselgenerators:plant_oil",
+        "createdieselgenerators:ethanol",
+        "createaddition:bioethanol",
+        "brewinandchewin:beer",
+        "createaddition:seed_oil"
+    ],
+    "fuel_ticks": 5
+}

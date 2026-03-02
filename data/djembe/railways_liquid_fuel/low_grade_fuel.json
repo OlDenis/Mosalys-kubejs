@@ -1,7 +1,8 @@
 {
     "fluids": [
         "createdieselgenerators:gasoline",
+        "createdieselgenerators:biodiesel",
         "minecraft:lava"
     ],
-    "fuel_ticks": 1
+    "fuel_ticks": 10
 }
