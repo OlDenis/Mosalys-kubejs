@@ -28,10 +28,6 @@ function decorativeRecipes(event, wood_type, logs) {
 }
 
 ServerEvents.recipes(event => {
-    // Convert mixed pavers recipe from stonecutting to sawmill
-    let filter = { type: 'minecraft:stonecutting', mod: 'decorativepavers' }
-    event.remove(filter);
-
     function mixedPavers(wood_a, wood_b, n) {
         n = pad(n, 2);
         event.shaped(
@@ -45,6 +41,8 @@ ServerEvents.recipes(event => {
                 'B': `decorativepavers:${wood_b}_paver_${n}`
             }
         )
+        event.remove({id: `decorativepavers:${wood_a}_and_${wood_b}_paver_${n}`})
+        event.remove({id: `decorativepavers:${wood_a}_and_${wood_b}_paver_${n}_2`})
     }
 
     mixedPavers('spruce', 'oak', 1)
@@ -83,4 +81,14 @@ ServerEvents.recipes(event => {
 
     fourPavers('dark_oak', 'crimson', 'mangrove', 'warped', 7, 1)
     fourPavers('oak', 'spruce', 'birch', 'jungle', 7, 2)
+
+    // Remove stone cutting recipes for pavers made of 4 woods
+    for (let i = 1; i <= 4; i++) {
+        let end = '';
+        if (i !== 1) {
+            end = `_${i}`;
+        }
+        event.remove({id: `decorativepavers:dark_oak_crimson_mangrove_and_warped_paver_01${end}`})
+        event.remove({id: `decorativepavers:oak_spruce_birch_and_jungle_paver_02${end}`})
+    }
 });
