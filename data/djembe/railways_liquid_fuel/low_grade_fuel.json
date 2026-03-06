@@ -4,5 +4,5 @@
         "createdieselgenerators:biodiesel",
         "minecraft:lava"
     ],
-    "fuel_ticks": 10
+    "fuel_ticks": 200
 }
