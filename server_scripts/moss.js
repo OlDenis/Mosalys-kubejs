@@ -98,7 +98,7 @@ ServerEvents.recipes(event => {
         blockSetStonecutting(block, recipe_id);
     }
 
-    function blockCoatRecipes(bare_block, coated_block, coat, recipe_id ){
+    function blockCoatRecipes(coated_block, bare_block, coat, recipe_id ){
         event.shapeless(
             coated_block,
             [
