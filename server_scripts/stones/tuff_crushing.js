@@ -36,6 +36,6 @@ ServerEvents.recipes(event => {
         withChance('stoneworks:cobbled_tuff', 0.85),
         '#create:stone_types/tuff'
     ).id('kubejs:tuff_crushing');
-
+    
     event.recipes.create.finalize();
 });

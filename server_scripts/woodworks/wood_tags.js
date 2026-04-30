@@ -37,4 +37,8 @@ ServerEvents.tags('item', event => {
 
     // Garnished additions
     event.add("garnished_additions:ethereal_logs", "#minecraft:ethereal_logs")
+
+    // Undergarden
+    event.add("undergarden:ancient_root_logs", "undergarden:ancient_root")
+
 });

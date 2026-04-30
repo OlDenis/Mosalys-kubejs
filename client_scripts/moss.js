@@ -63,23 +63,22 @@ function coatBlocks(bare_block, mossy_block, moss_item, coat_sound, tool, tool_s
 
 const moss = 'kubejs:moss_clump'
 // Cobbled variants
-coatBlocks('minecraft:stone', 'regions_unexplored:mossy_stone', moss);
-coatBlocks('minecraft:cobblestone', 'minecraft:mossy_cobblestone', moss);
-coatBlocks('minecraft:andesite', 'stoneworks:mossy_cobbled_andesite', moss);
-coatBlocks('minecraft:diorite', 'stoneworks:mossy_cobbled_diorite', moss);
-coatBlocks('minecraft:granite', 'stoneworks:mossy_cobbled_granite', moss);
-coatBlocks('minecraft:calcite', 'stoneworks:mossy_cobbled_calcite', moss);
-coatBlocks('minecraft:tuff', 'stoneworks:mossy_cobbled_tuff', moss);
-coatBlocks('minecraft:netherrack', 'stoneworks:mossy_cobbled_netherrack', moss);
+coatBlocks('minecraft:cobblestone', 'minecraft:mossy_cobblestone', moss)
+coatBlocks('stoneworks:cobbled_andesite', 'stoneworks:mossy_cobbled_andesite', moss);
+coatBlocks('stoneworks:cobbled_diorite', 'stoneworks:mossy_cobbled_diorite', moss);
+coatBlocks('stoneworks:cobbled_granite', 'stoneworks:mossy_cobbled_granite', moss);
+coatBlocks('stoneworks:cobbled_calcite', 'stoneworks:mossy_cobbled_calcite', moss);
+coatBlocks('stoneworks:cobbled_tuff', 'stoneworks:mossy_cobbled_tuff', moss);
+coatBlocks('stoneworks:cobbled_netherrack', 'stoneworks:mossy_cobbled_netherrack', moss);
 coatBlocks('stoneworks:cobbled_blackstone', 'stoneworks:mossy_cobbled_blackstone', moss);
-coatBlocks('minecraft:end_stone', 'stoneworks:mossy_cobbled_end_stone', moss);
-coatBlocks('minecraft:purpur_block', 'stoneworks:mossy_cobbled_purpur', moss);
-coatBlocks('minecraft:prismarine', 'stoneworks:mossy_cobbled_prismarine', moss);
-coatBlocks('minecraft:dark_prismarine', 'stoneworks:mossy_cobbled_dark_prismarine', moss);
-coatBlocks('minecraft:sandstone', 'stoneworks:mossy_cobbled_sandstone', moss);
-coatBlocks('minecraft:red_sandstone', 'stoneworks:mossy_cobbled_red_sandstone', moss);
-coatBlocks('minecraft:quartz', 'stoneworks:mossy_cobbled_quartz', moss);
-coatBlocks('minecraft:basalt', 'stoneworks:mossy_cobbled_basalt', moss);
+coatBlocks('stoneworks:cobbled_end_stone', 'stoneworks:mossy_cobbled_end_stone', moss);
+coatBlocks('stoneworks:cobbled_purpur', 'stoneworks:mossy_cobbled_purpur', moss);
+coatBlocks('stoneworks:cobbled_prismarine', 'stoneworks:mossy_cobbled_prismarine', moss);
+coatBlocks('stoneworks:cobbled_dark_prismarine', 'stoneworks:mossy_cobbled_dark_prismarine', moss);
+coatBlocks('stoneworks:cobbled_sandstone', 'stoneworks:mossy_cobbled_sandstone', moss);
+coatBlocks('stoneworks:cobbled_red_sandstone', 'stoneworks:mossy_cobbled_red_sandstone', moss);
+coatBlocks('stoneworks:cobbled_quartz', 'stoneworks:mossy_cobbled_quartz', moss);
+coatBlocks('stoneworks:cobbled_basalt', 'stoneworks:mossy_cobbled_basalt', moss);
 coatBlocks('minecraft:cobbled_deepslate', 'stoneworks:mossy_cobbled_deepslate', moss);
 
 // Bricks variants
