@@ -99,15 +99,13 @@ ServerEvents.recipes(event => {
     event.remove({id: 'alloyed:mixing/steel_ingot'})
     event.recipes.create.mixing(
         [
-            'alloyed:steel_ingot',
+            Item.of('alloyed:steel_ingot', 2),
             withChance('alloyed:steel_nugget', 0.3333),
             withChance('create:experience_nugget', 0.5)
         ],        
         [
             'minecraft:iron_ingot',
             'minecraft:iron_ingot',
-            '#create_ironworks:carbon_dust',
-            '#create_ironworks:carbon_dust',
             '#create_ironworks:carbon_dust',
             '#create_ironworks:carbon_dust',
             '#create_ironworks:carbon_dust',
