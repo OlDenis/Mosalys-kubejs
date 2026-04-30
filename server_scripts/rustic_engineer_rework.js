@@ -26,7 +26,7 @@ ServerEvents.recipes(event => {
          'alloyed:steel_nugget');
     // Gears are made by cutting steel sheets
     event.remove({output: 'rustic_engineer:gear'});
-    event.stonecutting('9x rustic_engineer:gear', 'alloyed:steel_sheet');
+    event.stonecutting('9x rustic_engineer:gear', '#c:plates/steel');
     // Replace iron nuggets by gears in precision mechanism recipe
     event.remove(
         {output: 'create:precision_mechanism'});
