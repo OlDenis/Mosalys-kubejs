@@ -1,37 +1,53 @@
 ServerEvents.recipes(event => {
-    function money(baseCoin, lowerCoin, higherCoin) {
-        // Convert 8 lower coins to 1 base coin
-        if (lowerCoin) {
-            event.shapeless(
-                baseCoin,
-                Item.of(lowerCoin, 8)
-            )
-        }
-        if (higherCoin) {
-            // Convert 1 higher coin to 8 base coins
-            event.shapeless(
-                Item.of(baseCoin, 8),
-                higherCoin
-            )
-        }
-    }
+    // Bevels
+    event.shapeless(
+        Item.of('numismatics:spur', 8),
+        'numismatics:bevel'
+    )
+    event.shapeless(
+        'numismatics:bevel',
+        Item.of('numismatics:spur', 8)
+    )
+    // Sprockets
+    event.shapeless(
+        Item.of('numismatics:bevel', 2),
+        'numismatics:sprocket'
+    )
+    event.shapeless(
+        'numismatics:sprocket',
+        Item.of('numismatics:spur', 16)
+    )
+    // Cogs
+    event.shapeless(
+        Item.of('numismatics:sprocket', 4),
+        'numismatics:cog'
+    )
+    event.shapeless(
+        Item.of('numismatics:bevel', 8),
+        'numismatics:cog'
+    )
+    event.shapeless(
+        'numismatics:cog',
+        Item.of('numismatics:bevel', 8)
+    )
+    // Crowns
+    event.shapeless(
+        Item.of('numismatics:cog', 8),
+        'numismatics:crown'
+    )
+    event.shapeless(
+        'numismatics:crown',
+        Item.of('numismatics:cog', 8)
+    )
+    // Suns
+    event.shapeless(
+        Item.of('numismatics:crown', 8),
+        'numismatics:sun'
+    )
+    event.shapeless(
+        'numismatics:sun',
+        Item.of('numismatics:crown', 8)
+    )
 
-    // Coins
-    const coins = [
-        'spur',
-        'bevel',
-        'sprocket',
-        'cog',
-        'crown',
-        'sun'
-    ]
 
-    // Money recipes
-    let mod = 'numismatics'
-    for(let i = 0; i < coins.length; i++) {
-        let baseCoin = `numismatics:${coins[i]}`
-        let lowerCoin = i > 0 ? `numismatics:${coins[i - 1]}` : null
-        let higherCoin = i < coins.length - 1 ? `numismatics:${coins[i + 1]}` : null
-        money(baseCoin, lowerCoin, higherCoin)
-    }
 });
