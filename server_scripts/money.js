@@ -10,12 +10,12 @@ ServerEvents.recipes(event => {
     )
     // Sprockets
     event.shapeless(
-        Item.of('numismatics:bevel', 2),
-        'numismatics:sprocket'
+        'numismatics:sprocket',
+        Item.of('numismatics:bevel', 2)
     )
     event.shapeless(
-        'numismatics:sprocket',
-        Item.of('numismatics:spur', 16)
+        Item.of('numismatics:spur', 16),
+        'numismatics:sprocket'
     )
     // Cogs
     event.shapeless(
