@@ -239,6 +239,14 @@ ServerEvents.recipes(event => {
         `kubejs:mossy_blackstone_bricks`
     )
 
+    // Bricks
+    mossyVariantsRecipes(
+        `minecraft:bricks`,
+        'immersive_weathering:mossy_bricks',
+        'kubejs:moss_clump',
+        'kubejs:mossy_bricks'
+    )
+
     // Sand
     event.shapeless(
         'minecraft:sand',
