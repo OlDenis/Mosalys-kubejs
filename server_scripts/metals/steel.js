@@ -128,13 +128,13 @@ ServerEvents.recipes(event => {
     ).id('kubejs:mixing/steel_coal_from_ingot')
 
     steelRecipe(
-        'create:crushed_iron', 
+        'create:crushed_raw_iron', 
         'create_ironworks:charcoal_dust', 
         4, 0.8
     ).id('kubejs:mixing/steel_charcoal_from_crushed')
     
     steelRecipe(
-        'create:crushed_iron', 
+        'create:crushed_raw_iron', 
         'create_ironworks:coal_dust', 
         7, 0.2
     ).id('kubejs:mixing/steel_coal_from_crushed')
