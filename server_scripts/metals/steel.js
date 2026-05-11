@@ -96,22 +96,73 @@ ServerEvents.recipes(event => {
 
     // Change Alloyed steel recipe for Create Ironworks steel ingot
     event.remove({id: 'alloyed:mixing/steel_ingot'})
+    function steelRecipe(iron, carbon, n_steel_nugget, p_iron_nugget) {
+        return event.recipes.create.mixing(
+            [
+                Item.of('alloyed:steel_ingot', 1),
+                Item.of('alloyed:steel_nugget', n_steel_nugget).
+                    withChance('minecraft:iron_nugget', p_iron_nugget),
+                withChance('create:experience_nugget', 0.95)
+            ],
+            [
+                iron,
+                iron,
+                carbon,
+                carbon,
+                carbon,
+                carbon,
+                carbon
+            ]
+        ).superheated()
+    }
+    steelRecipe(
+        'minecraft:iron_ingot', 
+        'create_ironworks:charcoal_dust', 
+        2, 0.8
+    ).id('kubejs:mixing/steel_charcoal_from_ingot')
+    
+    steelRecipe(
+        'minecraft:iron_ingot', 
+        'create_ironworks:coal_dust', 
+        5, 0.2
+    ).id('kubejs:mixing/steel_coal_from_ingot')
+
+    steelRecipe(
+        'create:crushed_iron', 
+        'create_ironworks:charcoal_dust', 
+        4, 0.8
+    ).id('kubejs:mixing/steel_charcoal_from_crushed')
+    
+    steelRecipe(
+        'create:crushed_iron', 
+        'create_ironworks:coal_dust', 
+        7, 0.2
+    ).id('kubejs:mixing/steel_coal_from_crushed')
+
+    event.remove({id: [
+        'create_ironworks:materials/alloys/steel_coal_from_crushed',
+        'create_ironworks:materials/alloys/steel_coal_from_ingot',
+        'create_ironworks:materials/alloys/steel_charcoal_from_crushed',
+        'create_ironworks:materials/alloys/steel_charcoal_from_ingot'
+    ]})
+
     event.recipes.create.mixing(
         [
-            Item.of('alloyed:steel_ingot', 2),
-            withChance('alloyed:steel_nugget', 0.3333),
-            withChance('create:experience_nugget', 0.5)
+            Item.of('alloyed:steel_ingot', 1),
+            Item.of('alloyed:steel_nugget', 2).
+            withChance('minecraft:iron_nugget', 0.8),
+            withChance('create:experience_nugget', 0.95)
         ],        
         [
             'minecraft:iron_ingot',
             'minecraft:iron_ingot',
-            '#create_ironworks:carbon_dust',
-            '#create_ironworks:carbon_dust',
-            '#create_ironworks:carbon_dust',
-            '#create_ironworks:carbon_dust',
-            '#create_ironworks:carbon_dust'
+            'create_ironworks:charcoal_dust',
+            'create_ironworks:charcoal_dust',
+            'create_ironworks:charcoal_dust',
+            'create_ironworks:charcoal_dust',
+            'create_ironworks:charcoal_dust'
         ]
-    ).superheated().id('kubejs:mixing/steel_ingot')
+    ).superheated().id('kubejs:mixing/steel_charcoal_from_ingot')
 
     // Steel sheet metal from steel sheets (Alloyed)
     event.shapeless(
