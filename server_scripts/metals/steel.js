@@ -28,8 +28,6 @@ ServerEvents.tags('item', event => {
 
 // This script tweaks the steel ingot recipes
 ServerEvents.recipes(event => {
-    // THIS LINE IS IMPORTANT!
-    // IT MUST BE THE FIRST LINE IN THE EVENT HANDLER
     addCreateRecipeHandler(event);
 
     // Adding ingot folding recipes
@@ -40,6 +38,7 @@ ServerEvents.recipes(event => {
     })
     // Removing original steel ingot recipe
     event.remove({id: 'samurai_dynasty:steel_ingot_from_blasting_iron_ingot'})
+
     // Adding new blasting recipes
     event.blasting(
         'kubejs:wrought_iron_ingot_0',
@@ -143,9 +142,11 @@ ServerEvents.recipes(event => {
         'alloyed:steel_ingot'
     )
 
-
-    // THIS LINE IS ALSO IMPORTANT!
-    // IT MUST BE THE LAST LINE IN THE EVENT HANDLER
+    // Allow conversion from ironworks steel ingots to alloyed steel ingots
+    event.shapeless(
+        'alloyed:steel_ingot',
+        'create_ironworks:steel_ingot'
+    )
     event.recipes.create.finalize();
 })
 
