@@ -100,8 +100,8 @@ ServerEvents.recipes(event => {
         return event.recipes.create.mixing(
             [
                 Item.of('alloyed:steel_ingot', 1),
-                Item.of('alloyed:steel_nugget', n_steel_nugget).
-                    withChance('minecraft:iron_nugget', p_iron_nugget),
+                Item.of('alloyed:steel_nugget', n_steel_nugget),
+                withChance('minecraft:iron_nugget', p_iron_nugget),
                 withChance('create:experience_nugget', 0.95)
             ],
             [
@@ -139,30 +139,12 @@ ServerEvents.recipes(event => {
         7, 0.2
     ).id('kubejs:mixing/steel_coal_from_crushed')
 
-    event.remove({id: [
-        'create_ironworks:materials/alloys/steel_coal_from_crushed',
-        'create_ironworks:materials/alloys/steel_coal_from_ingot',
-        'create_ironworks:materials/alloys/steel_charcoal_from_crushed',
-        'create_ironworks:materials/alloys/steel_charcoal_from_ingot'
-    ]})
-
-    event.recipes.create.mixing(
-        [
-            Item.of('alloyed:steel_ingot', 1),
-            Item.of('alloyed:steel_nugget', 2).
-            withChance('minecraft:iron_nugget', 0.8),
-            withChance('create:experience_nugget', 0.95)
-        ],        
-        [
-            'minecraft:iron_ingot',
-            'minecraft:iron_ingot',
-            'create_ironworks:charcoal_dust',
-            'create_ironworks:charcoal_dust',
-            'create_ironworks:charcoal_dust',
-            'create_ironworks:charcoal_dust',
-            'create_ironworks:charcoal_dust'
-        ]
-    ).superheated().id('kubejs:mixing/steel_charcoal_from_ingot')
+    event.remove([
+        {id: 'create_ironworks:materials/alloys/steel_coal_from_crushed'},
+        {id: 'create_ironworks:materials/alloys/steel_coal_from_ingot'},
+        {id: 'create_ironworks:materials/alloys/steel_charcoal_from_crushed'},
+        {id: 'create_ironworks:materials/alloys/steel_charcoal_from_ingot'}
+    ])
 
     // Steel sheet metal from steel sheets (Alloyed)
     event.shapeless(
