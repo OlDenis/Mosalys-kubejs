@@ -98,14 +98,18 @@ ServerEvents.recipes(event => {
         blockSetStonecutting(block, recipe_id);
     }
 
-    function blockCoatRecipes(coated_block, bare_block, coat, recipe_id) {
+    function blockCoatRecipe(coated_block, bare_block, coat, recipe_id) {
         event.shapeless(
             coated_block,
             [
                 coat,
                 bare_block
             ]
-        );
+        ).id(recipe_id);
+    }
+
+    function blockCoatRecipes(coated_block, bare_block, coat, recipe_id) {
+        blockCoatRecipe(coated_block, bare_block, coat, recipe_id);
         blockSetRecipes(coated_block, recipe_id)
     }
 
@@ -166,12 +170,16 @@ ServerEvents.recipes(event => {
     }
     // Stone
     event.remove({ output: 'regions_unexplored:mossy_stone' });
-    blockCoatRecipes(
-        'regions_unexplored:mossy_stone',
-        'minecraft:stone',
-        'kubejs:moss_clump',
-        'mossy_stone'
-    )
+    blockCoatRecipes('regions_unexplored:mossy_stone','minecraft:stone', 'kubejs:moss_clump','mossy_stone')
+
+    // Cobblestone
+    event.remove({ output: 'minecraft:mossy_cobblestone' });
+    blockCoatRecipe('minecraft:mossy_cobblestone', 'minecraft:cobblestone', 'kubejs:moss_clump', 'mossy_cobblestone')
+    
+    // Stone bricks
+    event.remove({ output: 'minecraft:mossy_stone_bricks' });
+    blockCoatRecipe('minecraft:mossy_stone_bricks', 'minecraft:stone_bricks', 'kubejs:moss_clump', 'mossy_stone_bricks')
+    blockCoatRecipe('immersive_weathering:mossy_chiseled_stone_bricks', 'minecraft:chiseled_stone_bricks', 'kubejs:moss_clump', 'mossy_chiseled_stone_bricks')
 
     // Blackstone
     mossyVariantsRecipes(
@@ -214,10 +222,8 @@ ServerEvents.recipes(event => {
             'AA',
             'AA'
         ],
-        {
-            'A': 'minecraft:snow_block'
-        }
-    )
+        {'A': 'minecraft:snow_block'}
+    ).id('snow_bricks');
     blockSetRecipes('immersive_weathering:snow_bricks', 'snow_bricks')
 
     blockCoatRecipes('immersive_weathering:snowy_stone', 'minecraft:stone', 'minecraft:snowball', 'snowy_stone')
