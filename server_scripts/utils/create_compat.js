@@ -26,9 +26,9 @@ function fromEntries(entries) {
   return result;
 }
 
-const basicRecipe = (type) => (output, input) => {
+const basicRecipe = (mod_id,type) => (output, input) => {
   const result = {
-    type: 'create:'+type,
+    type: `${mod_id}:${type}`,
     ingredients: jsonArray(input),
     results: jsonArray(output, true),
   }
@@ -93,14 +93,14 @@ const jsonArray = (items, isOutput) => {
 };
 
 const create = {
-  compacting: basicRecipe("compacting"),
-  crushing: basicRecipe("crushing"),
-  cutting: basicRecipe("cutting"),
-  deploying: basicRecipe("deploying"),
-  emptying: basicRecipe("emptying"),
-  filling: basicRecipe("filling"),
-  haunting: basicRecipe("haunting"),
-  item_application: basicRecipe("item_application"),
+  compacting: basicRecipe("create", "compacting"),
+  crushing: basicRecipe("create", "crushing"),
+  cutting: basicRecipe("create", "cutting"),
+  deploying: basicRecipe("create", "deploying"),
+  emptying: basicRecipe("create", "emptying"),
+  filling: basicRecipe("create", "filling"),
+  haunting: basicRecipe("create", "haunting"),
+  item_application: basicRecipe("create", "item_application"),
   mechanical_crafting: (output, pattern, key) => ({
     accept_mirrored: true,
     type: "create:mechanical_crafting",
@@ -110,10 +110,10 @@ const create = {
       Object.entries(key).map(([k, v]) => [k, Ingredient.of(v).toJson()])
     ),
   }),
-  milling: basicRecipe("milling"),
-  mixing: basicRecipe("mixing"),
-  pressing: basicRecipe("pressing"),
-  sandpaper_polishing: basicRecipe("sandpaper_polishing"),
+  milling: basicRecipe('create', "milling"),
+  mixing: basicRecipe("create", "mixing"),
+  pressing: basicRecipe("create", "pressing"),
+  sandpaper_polishing: basicRecipe("create", "sandpaper_polishing"),
   sequenced_assembly: (output, input, recipes) => {
     let sequence = recipes.map((recipe) => {
       // Mark each component recipe as intermediate so they don't get registered
@@ -129,8 +129,13 @@ const create = {
       transitional_item: Ingredient.of(input).toJson(),
     };
   },
-  splashing: basicRecipe("splashing"),
+  splashing: basicRecipe("create", "splashing"),
+  hydraulic_compacting: basicRecipe("dndesires", "hydraulic_compacting"),
+  dragon_breathing: basicRecipe("dndesires", "dragon_breathing"),
+  freezing: basicRecipe("dndesires", "freezing"),
+  seething: basicRecipe("dndesires", "seething")
 };
+
 
 let pendingRecipes = [];
 
