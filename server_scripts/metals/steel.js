@@ -139,12 +139,7 @@ ServerEvents.recipes(event => {
         7, 0.2
     ).id('kubejs:mixing/steel_coal_from_crushed')
 
-    event.remove([
-        {id: 'create_ironworks:materials/alloys/steel_coal_from_crushed'},
-        {id: 'create_ironworks:materials/alloys/steel_coal_from_ingot'},
-        {id: 'create_ironworks:materials/alloys/steel_charcoal_from_crushed'},
-        {id: 'create_ironworks:materials/alloys/steel_charcoal_from_ingot'}
-    ])
+    event.remove({output: 'create_ironworks:steel_ingot'})
 
     // Steel sheet metal from steel sheets (Alloyed)
     event.shapeless(
