@@ -6,13 +6,17 @@ StartupEvents.registry('block', event => {
             .fullBlock(true);
     }
 
-    function createSet(blockname, createFunc){
-        createBlock(blockname, createFunc)
+    function completeSet(blockname, createFunc){
         for (let type of ['stairs', 'slab', 'wall']) {
             blockname = blockname.replace('bricks', 'brick')
             createFunc(event.create(`${blockname}_${type}`, type))
                 .waterlogged();
         }
+    }
+
+    function createSet(blockname, createFunc){
+        createBlock(blockname, createFunc);
+        completeSet(blockname, createFunc);
     }
 
     // Block set attributes
@@ -100,6 +104,7 @@ StartupEvents.registry('block', event => {
     createSet('immersive_weathering:mossy_bricks', bricks);
     createSet('immersive_weathering:cracked_bricks', bricks);
     createBlock('immersive_weathering:mossy_chiseled_stone_bricks', stone)
+    completeSet('regions_unexplored:mossy_stone', stone);
         
     // Cracked
     createSet('immersive_weathering:cracked_end_stone_bricks', endStone);
