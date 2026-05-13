@@ -4,7 +4,7 @@ ServerEvents.recipes(event => {
         'supplementaries:sconce',
         [
             'NTN',
-            'N N'
+            ' N '
         ],
         {
             'N': 'create_ironworks:tin_nugget',
@@ -15,7 +15,7 @@ ServerEvents.recipes(event => {
         'supplementaries:sconce_soul',
         [
             'NTN',
-            'N N'
+            ' N '
         ],
         {
             N : 'create_ironworks:tin_nugget',
