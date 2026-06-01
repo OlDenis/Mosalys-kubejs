@@ -19,6 +19,7 @@ StartupEvents.registry('item', event => {
             .alwaysEdible()
             .fastToEat()
     });
+
     //immersive weathering
     for (let item of [
         'sand',
@@ -31,4 +32,15 @@ StartupEvents.registry('item', event => {
     ]){
         event.create(`immersive_weathering:${item}`);
     }
+
+    // Alloyed
+    event.create('alloyed:steel_upgrade_smithing_template');
+
+    // Chitin
+    event.create('dusty_tweak:chitin_powder')
+        .texture('minecraft:item/sugar')
+        .color('#a99081')
+
+    // Rustic engineer
+    event.create('rustic_engineer:gear')
 });

@@ -134,4 +134,11 @@ StartupEvents.registry('block', event => {
 
     // Stone wall
     stone(event.create('minecraft:stone_wall', 'wall'))
+
+    // Sediments
+    event.create('dusty_tweak:sediments', 'falling')
+        .gravelSoundType()
+        .hardness(0.6)
+        .resistance(0.6)
+        .tagBlock('minecraft:mineable/shovel')
 });
