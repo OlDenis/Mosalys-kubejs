@@ -1,3 +1,4 @@
+// requires: garnished
 ServerEvents.recipes(event =>{
     // Garnished
     commonWoodRecipes(event, 'garnished:nut');
@@ -6,6 +7,6 @@ ServerEvents.recipes(event =>{
     way_sign(event, 'garnished', 'sepia');
 
     // Garnished additions
-    commonWoodRecipes(event, 'garnished_additions:ethereal', 'logs', true);
-    way_sign(event, 'garnished_additions', 'ethereal', 'logs', true);
+    // commonWoodRecipes(event, 'garnished_additions:ethereal', 'logs', true);
+    // way_sign(event, 'garnished_additions', 'ethereal', 'logs', true);
 });

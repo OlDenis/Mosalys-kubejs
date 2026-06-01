@@ -1,3 +1,4 @@
+//requires: aether
 ServerEvents.recipes(event =>{
     // Aether
     commonWoodRecipes(event, 'aether:skyroot');

@@ -61,7 +61,7 @@ ServerEvents.recipes(event =>{
         "larch",
         "magnolia",
         "maple",
-        "mauve",
+        "wisteria",
         "palm",
         "pine",
         "pink_bioshroom",
@@ -71,5 +71,6 @@ ServerEvents.recipes(event =>{
         "yellow_bioshroom"
     ]) {
         commonWoodRecipes(event, `regions_unexplored:${wood_type}`);
+        way_sign(event, 'regions_unexplored', wood_type)
     }
 });
