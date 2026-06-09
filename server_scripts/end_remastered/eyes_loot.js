@@ -105,16 +105,16 @@ const eyesLootTables = {
 
 LootJS.modifiers(event => {
     // Replace Old eye by amber_remnant
-    event.addTableModifier("minecraft:chests/desert_pyramid")
+    event.addTableModifier(LootType.CHEST)
         .replaceLoot("endrem:old_eye", "garnished:amber_remnant", true)
     // Add Old eye to sandworm loot table
     event.addTableModifier("block_factorys_bosses:bosses/sandworm")
         .addLoot("endrem:old_eye")
     // Replace rogue eye by its fragment
-    event.addTableModifier("minecraft:chests/jungle_temple")
+    event.addTableModifier(LootType.CHEST)
         .replaceLoot("endrem:rogue_eye", "kubejs:rogue_eye_fragment", true)
     // Replace black eye by its fragment
-    event.addTableModifier("minecraft:chests/buried_treasure")
+    event.addTableModifier(LootType.CHEST)
         .replaceLoot("endrem:black_eye", "kubejs:black_eye_fragment", true)
     // Replace cursed eye by its fragment
     event.addTableModifier(LootType.CHEST)
@@ -122,9 +122,9 @@ LootJS.modifiers(event => {
     // Replace lost eye by bread
     event.addTableModifier(LootType.CHEST)
         .replaceLoot("endrem:lost_eye", "minecraft:bread", true)
-    // Replace corrupted eye by bread
-    event.addTableModifier("minecraft:chests/pillager_outpost")
-        .replaceLoot("endrem:corrupted_eye", "create_rosegold:rose_gold_nugget")
+    // Replace corrupted eye by gold nugget
+    event.addTableModifier(LootType.CHEST)
+        .replaceLoot("endrem:corrupted_eye", "minecraft:gold_nugget")
     // Add corrupted eye to lone citadel loot tables
     event.addTableModifier("nova_structures:chests/lone_citadel/c_vault_boss")
         .randomChance(1.0)
@@ -141,14 +141,10 @@ LootJS.modifiers(event => {
     // Add Cold eye to sandworm loot table
         event.addTableModifier("block_factorys_bosses:bosses/yeti")
             .addLoot("endrem:cold_eye")
-    // Replace Nether Eye by Rose gold ingot
+    // Replace Nether Eye by Gold ingot
     event.addTableModifier("minecraft:chests/nether_bridge")
-        .replaceLoot("endrem:nether_eye", "create_rosegold:rose_gold_ingot")
+        .replaceLoot("endrem:nether_eye", "minecraft:gold_ingot")
     })
-
-// const aetherFilter = ItemFilter.custom(item => {
-//     return item.hasTas('')
-// })
 
 // Add Eye fragments to loot tables
 LootJS.lootTables(event => {
